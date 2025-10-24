@@ -48,24 +48,19 @@ jobs:
           r.raise_for_status()
           PY
 
-      - name: Run scraper (with traceback)
+      - name: Run scraper
         run: |
           set -euxo pipefail
-          python - <<'PY'
-          import sys,traceback
-          import multi_schools
-          try:
-              multi_schools.main()
-              print("SCRAPER_DONE")
-          except Exception as e:
-              print("SCRAPER_FAILED")
-              traceback.print_exc()
-              sys.exit(1)
-          PY
-          echo "---- LIST output ----"; ls -lah output || true
-          echo "---- HEAD events.json ----"; test -f output/events.json && head -c 400 output/events.json || true
+          python multi_schools.py
+
+          echo "---- LIST output ----"
+          ls -lah output || true
+          echo "---- HEAD events.json ----"
+          head -c 400 output/events.json || true
+
           # Echoue si events.json n'existe pas
           test -f output/events.json
+
 
       - name: Prepare static site
         run: |
