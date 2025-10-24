@@ -2,7 +2,7 @@ name: Build & Deploy (weekly)
 
 on:
   schedule:
-    - cron: '0 6 * * 1'   # tous les lundis 06:00 UTC
+    - cron: '0 6 * * 1'
   workflow_dispatch: {}
   push:
     branches: [ main ]
@@ -37,6 +37,14 @@ jobs:
       - name: Run scraper
         run: |
           python multi_schools.py
+          echo "---- LIST output ----"
+          ls -lah output || true
+          echo "---- HEAD events.json ----"
+          head -c 400 output/events.json || true
+
+          # Échoue si events.json n'existe pas
+          test -f output/events.json || (echo "ERROR: output/events.json manquant" && exit 1)
+
           mkdir -p public
           cp -r output/* public/
 
