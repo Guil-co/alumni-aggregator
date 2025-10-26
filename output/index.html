@@ -15,7 +15,7 @@ body{font:16px system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0}
 
 h1{font-size:24px; margin:16px 0}
 
-/* sticky desktop, non-sticky mobile */
+/* Filtres : sticky desktop, SANS sticky en paysage/hauteur faible */
 .filters{
   position:sticky; top:0; z-index:10;
   display:flex; gap:10px; align-items:center; flex-wrap:wrap;
@@ -26,6 +26,13 @@ h1{font-size:24px; margin:16px 0}
 @media (max-width: 640px){
   .filters{ position:static; backdrop-filter:none; background:transparent; border-bottom:none; margin:0 0 8px; padding:10px 0 }
 }
+/* paysage / petite hauteur -> jamais sticky */
+@media (max-height: 520px){
+  .filters{ position:static; backdrop-filter:none; background:transparent; border-bottom:none; }
+}
+@media (orientation: landscape) and (max-height: 600px){
+  .filters{ position:static; backdrop-filter:none; background:transparent; border-bottom:none; }
+}
 
 .input, select{
   font-size:16px; padding:10px 12px; border-radius:10px; border:1px solid var(--border);
@@ -35,28 +42,45 @@ select:disabled{opacity:.55}
 label.inline{display:flex; gap:8px; align-items:center; font-size:14px; color:var(--muted)}
 
 .section-title{
-  margin:18px 0 8px; color:#374151; font-size:15px; font-weight:700; text-transform:capitalize;
+  margin:18px 0 8px; color:#374151; font-size:20px; font-weight:800; text-transform:capitalize;
 }
 
+/* Cartes compactes et robustes */
 .card{
-  background:var(--card); border-radius:14px; padding:14px; margin:12px 0;
-  box-shadow:var(--shadow); display:flex; gap:14px; align-items:flex-start; min-height:108px;
+  background:var(--card); border-radius:14px; padding:12px; margin:12px 0;
+  box-shadow:var(--shadow); display:flex; gap:12px; align-items:flex-start; min-height:96px;
   transition:transform .12s ease, box-shadow .12s ease;
+  overflow:hidden; /* sécurité */
+  word-break:break-word; overflow-wrap:anywhere; /* ✅ casse les très longs mots/URL */
 }
 .card:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,.08) }
 
-.thumb{width:160px; height:100px; border-radius:10px; object-fit:cover; flex-shrink:0}
-@media (max-width:360px){ .thumb{display:none} }
+.thumb{
+  width:160px; height:100px; border-radius:10px; object-fit:cover; flex:0 0 auto; /* ✅ pas d'étirement */
+}
+@media (max-width:640px){ .thumb{ width:96px; height:64px } }
+@media (max-width:420px){ .thumb{ display:none } } /* ✅ cache la vignette sur très petits écrans */
 
 .meta{font-size:13px; color:var(--muted); margin:4px 0}
 .badge{display:inline-flex; align-items:center; gap:6px; padding:3px 8px; border-radius:999px;
        background:var(--chip-bg); color:var(--chip); font-size:12px; font-weight:600}
 .school{margin-left:8px}
-.title{font-weight:800; line-height:1.25; margin:4px 0 2px; display:flex; flex-wrap:wrap; gap:8px}
-.title > strong{font-size:16px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
-.desc{font-size:14px; line-height:1.35; color:var(--muted); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
-.btn{display:inline-block; margin-top:10px; background:var(--brand); color:#fff;
-     padding:10px 14px; border-radius:10px; font-weight:700; font-size:14px; text-decoration:none}
+.title{font-weight:800; line-height:1.25; margin:2px 0 2px; display:flex; flex-wrap:wrap; gap:8px}
+.title > strong{
+  font-size:16px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+@media (max-width:640px){ .title > strong{ font-size:15px; -webkit-line-clamp:2 } }
+
+.desc{
+  font-size:14px; line-height:1.35; color:var(--muted);
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+}
+@media (max-width:640px){ .desc{ -webkit-line-clamp:2 } }
+
+.btn{
+  display:inline-block; margin-top:10px; background:var(--brand); color:#fff;
+  padding:10px 14px; border-radius:10px; font-weight:700; font-size:14px; text-decoration:none;
+}
 .btn:focus-visible{outline:2px solid #6d64ff}
 </style>
 
@@ -74,20 +98,16 @@ label.inline{display:flex; gap:8px; align-items:center; font-size:14px; color:va
 </div>
 
 <script>
-// --- helpers ---
-const $ = sel => document.querySelector(sel);
+const $ = s => document.querySelector(s);
 function cleanHtml(s){ return (s||'').replace(/<[^>]*>/g,''); }
 function toTitleCaseCity(s){
-  if(!s) return '';
-  let t = s.toString().trim().toLowerCase();
-  return t.split(/\s+/).map(part =>
-    part.split('-').map(p => p ? p[0].toUpperCase()+p.slice(1) : p).join('-')
-  ).join(' ');
+  if(!s) return ''; let t=s.toString().trim().toLowerCase();
+  return t.split(/\s+/).map(part=>part.split('-').map(p=>p? p[0].toUpperCase()+p.slice(1):p).join('-')).join(' ');
 }
 function normCity(s){ return toTitleCaseCity(s); }
 
 async function load(){
-  const r = await fetch('events.json', {cache:'no-store'});
+  const r = await fetch('events.json',{cache:'no-store'});
   const data = await r.json();
   window.allEvents = data;
   populateFilters(data);
@@ -97,14 +117,11 @@ async function load(){
 function populateFilters(data){
   const schools=[...new Set(data.map(e=>e.school).filter(Boolean))].sort();
   const cities=[...new Set(data.map(e=>normCity(e.city)).filter(Boolean))].sort();
-
   const sSel=$('#school'), cSel=$('#city'), q=$('#search'), chk=$('#onlineOnly');
   schools.forEach(x=>sSel.innerHTML+=`<option>${x}</option>`);
   cities.forEach(c=>cSel.innerHTML+=`<option>${c}</option>`);
-
   [sSel,cSel,q,chk].forEach(el=>el.addEventListener('input', onFiltersChange));
   chk.addEventListener('change', onFiltersChange);
-
   if(chk.checked){ cSel.disabled=true; cSel.value=''; }
 }
 
@@ -117,7 +134,7 @@ function onFiltersChange(){
 function renderFiltered(){
   const q=($('#search').value||'').toLowerCase();
   const school=$('#school').value;
-  const citySel=$('#city').value; // déjà normalisé
+  const citySel=$('#city').value;
   const onlineOnly=$('#onlineOnly').checked;
 
   const filtered = window.allEvents.filter(e=>{
@@ -132,29 +149,25 @@ function renderFiltered(){
   renderGrouped(filtered);
 }
 
-/* ---------- Groupement par jour ---------- */
+/* --- Groupement par jour --- */
 function renderGrouped(rows){
   const list=$('#list');
   if(!rows.length){ list.innerHTML='<p style="color:#666">Aucun événement trouvé.</p>'; return; }
 
-  // group by YYYY-MM-DD
-  const groups = {};
+  const groups={};
   for(const d of rows){
     const key = d.start ? new Date(d.start).toISOString().slice(0,10) : 'sans-date';
     (groups[key] ||= []).push(d);
   }
+  const days=Object.keys(groups).sort();
 
-  const days = Object.keys(groups).sort(); // asc
-
-  const sections = days.map(day=>{
+  list.innerHTML = days.map(day=>{
     const title = (day==='sans-date')
       ? 'Sans date'
-      : new Date(day).toLocaleDateString('fr-FR', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+      : new Date(day).toLocaleDateString('fr-FR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
     const cards = groups[day].map(cardHtml).join('');
-    return `<h3 class="section-title">${title}</h3>${cards}`;
+    return `<h2 class="section-title">${title}</h2>${cards}`;
   }).join('');
-
-  list.innerHTML = sections;
 }
 
 function cardHtml(d){
