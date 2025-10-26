@@ -15,7 +15,7 @@ body{font:16px system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0}
 
 h1{font-size:24px; margin:16px 0}
 
-/* Filtres : sticky desktop, pas sticky mobile/paysage */
+/* Filtres : sticky desktop, non-sticky mobile/paysage */
 .filters{
   position:sticky; top:0; z-index:10;
   display:flex; gap:10px; align-items:center; flex-wrap:wrap;
@@ -40,7 +40,7 @@ label.inline{display:flex; gap:8px; align-items:center; font-size:14px; color:va
   margin:18px 0 8px; color:#374151; font-size:20px; font-weight:800; text-transform:capitalize;
 }
 
-/* Cartes compactes et robustes */
+/* Cartes compactes */
 .card{
   background:var(--card); border-radius:14px; padding:12px; margin:12px 0;
   box-shadow:var(--shadow); display:flex; gap:12px; align-items:flex-start; min-height:96px;
@@ -92,15 +92,17 @@ label.inline{display:flex; gap:8px; align-items:center; font-size:14px; color:va
 </div>
 
 <script>
+// utilitaires
 const $ = s => document.querySelector(s);
 function cleanHtml(s){ return (s||'').replace(/<[^>]*>/g,''); }
 function toTitleCaseCity(s){
-  if(!s) return ''; 
+  if(!s) return '';
   let t=s.toString().trim().toLowerCase();
   return t.split(/\s+/).map(part=>part.split('-').map(p=>p? p[0].toUpperCase()+p.slice(1):p).join('-')).join(' ');
 }
 function normCity(s){ return toTitleCaseCity(s); }
 
+// chargement
 async function load(){
   const r = await fetch('events.json',{cache:'no-store'});
   const data = await r.json();
@@ -109,6 +111,7 @@ async function load(){
   renderFiltered();
 }
 
+// filtres
 function populateFilters(data){
   const schools=[...new Set(data.map(e=>e.school).filter(Boolean))].sort();
   const cities=[...new Set(data.map(e=>normCity(e.city)).filter(Boolean))].sort();
@@ -144,7 +147,7 @@ function renderFiltered(){
   renderGrouped(filtered);
 }
 
-/* --- Groupement par jour --- */
+// groupement par jour
 function renderGrouped(rows){
   const list=$('#list');
   if(!rows.length){ list.innerHTML='<p style="color:#666">Aucun événement trouvé.</p>'; return; }
@@ -165,6 +168,7 @@ function renderGrouped(rows){
   }).join('');
 }
 
+// une carte
 function cardHtml(d){
   const start = d.start ? new Date(d.start).toLocaleString('fr-FR',
     {weekday:'long', year:'numeric', month:'long', day:'numeric', hour:'2-digit', minute:'2-digit'}) : '';
@@ -172,10 +176,12 @@ function cardHtml(d){
   const badge = d.isOnline ? `<span class="badge">En ligne</span>` : `<span class="badge">📍 ${city||''}</span>`;
   const img = d.imageUrl ? `<img class="thumb" loading="lazy" src="${d.imageUrl}" alt="">` : '';
 
-  // Nettoyage de description : supprime adresse & débute au texte informatif
+  // Nettoyage description : supprime l'adresse et commence par le texte informatif
   let rawDesc = cleanHtml(d.description||'').replace(/\s+/g,' ').trim();
+  // supprime 1–2 segments d’adresse en tête (ex: "HEC Alumni, 9 Av. Franklin Delano Roosevelt, 75008, PARIS, FR")
   rawDesc = rawDesc.replace(/^((?:[A-ZÉÈÀ][^.!?]{0,120}\d{2,5}.*?[,;]?\s*){0,2})/i,'');
-  rawDesc = rawDesc.replace(/^(?:Hôtel|Palais|Cercle|Rue|Avenue|Boulevard|Place|9bis|L’|Le\s|La\s)[^.!?]{0,100}/i,'');
+  // supprime un autre préfixe type lieu
+  rawDesc = rawDesc.replace(/^(?:H[EÉ]C Alumni|Hôtel|Palais|Cercle|Rue|Avenue|Boulevard|Place|9bis|L’|Le\s|La\s)[^.!?]{0,120}/i,'');
   const desc = rawDesc.slice(0,250);
 
   return `
@@ -184,7 +190,6 @@ function cardHtml(d){
       <div>
         <div class="meta">${badge}${start?` · ${start}`:''}</div>
         <div class="title"><strong>${d.title}</strong><span class="badge school">${d.school}</span></div>
-        <div class="meta">${d.location||''}</div>
         <p class="desc">${desc}…</p>
         <a class="btn" href="${d.url}" target="_blank" rel="noopener">En savoir plus</a>
       </div>
