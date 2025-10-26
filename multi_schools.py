@@ -54,6 +54,18 @@ SITES = [
     "url":  "https://association.centralesupelec-alumni.com/api/v2/public/agenda/occurrence/visitor/occurrence?language=auto&published=1&order[begin_at]=asc&when=upcoming&properties[0]=group&properties[1]=streamer&limit=50",
     "type": "api_v2_hal",
     },
+    {
+        "school": "emlyon alumni",
+        "base": "https://www.emlyon-alumni.com",
+        "url": "https://www.emlyon-alumni.com/api/v2/public/agenda/occurrence/visitor/occurrence?language=auto&published=1&order[begin_at]=asc&when=upcoming&properties[0]=group&limit=50",
+        "type": "api_v2_hal",
+    },
+    {
+        "school": "EDHEC Alumni",
+        "base": "https://alumni.edhec.edu",
+        "url": "https://alumni.edhec.edu/api/v2/public/agenda/occurrence/visitor/occurrence?language=auto&published=1&order[begin_at]=asc&when=upcoming&properties[0]=group&limit=50",
+        "type": "api_v2_hal",
+    },
 
 ]
 
@@ -283,20 +295,31 @@ def main():
         print(f"✔ {school}: {len(rows)} événements")
         all_rows.extend(rows)
 
-    # exports
+    # exports (avec filtrage J-7)
     os.makedirs("output", exist_ok=True)
     df = pd.DataFrame(all_rows)
-    if "start" in df.columns:
-        df["start"] = pd.to_datetime(df["start"], errors="coerce")
-        df = df.sort_values(["start","school"], na_position="last")
-    df.to_csv("output/events.csv", index=False)
 
+    from datetime import datetime, timedelta, timezone  # import local sûr
+
+    # convertir dates + filtrer : ne garder que start >= aujourd'hui - 7 jours
+    if "start" in df.columns:
+        df["start"] = pd.to_datetime(df["start"], utc=True, errors="coerce")
+        cutoff = datetime.now(timezone.utc) - timedelta(days=7)
+        df = df[df["start"] >= cutoff]
+
+    # trier et réindexer
+    df = df.sort_values(["start", "school"], na_position="last").reset_index(drop=True)
+    print(f"🕓 {len(df)} événements conservés après filtrage (depuis {(datetime.now(timezone.utc) - timedelta(days=7)).date()})")
+
+    # exports
+    df.to_csv("output/events.csv", index=False)
     safe = json.loads(df.to_json(orient="records", date_format="iso"))
     with open("output/events.json", "w", encoding="utf-8") as f:
         json.dump(safe, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ Export fusionné : output/events.csv, output/events.json")
-    print("ℹ️ Debug A&M : output/debug/arts_raw_p1.json & arts_items_p1.json")
+    print("✅ Export fusionné : output/events.csv, output/events.json")
+
+    #print("ℹ️ Debug A&M : output/debug/arts_raw_p1.json & arts_items_p1.json")
 
 if __name__ == "__main__":
     main()
