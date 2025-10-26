@@ -1,22 +1,17 @@
-<!doctype html>
-<meta charset="utf-8">
+<!doctype html><meta charset="utf-8">
 <title>Agenda Alumni – multi-écoles</title>
 <style>
 body{font:14px system-ui,Arial;margin:24px;background:#f9fafc;color:#111}
 h1{font-size:22px;margin-bottom:1em}
 .event{background:white;border-radius:12px;padding:16px;margin:12px 0;
-       display:flex;align-items:flex-start;gap:16px;box-shadow:0 1px 4px rgba(0,0,0,.05);
-       min-height:120px;}
+       display:flex;align-items:flex-start;gap:16px;box-shadow:0 1px 4px rgba(0,0,0,.05);min-height:120px}
 .event img{width:160px;height:100px;object-fit:cover;border-radius:8px;flex-shrink:0}
 .event>div{flex:1}
 .meta{font-size:13px;color:#555;margin:4px 0}
-.school-tag{font-weight:600;color:#1e3a8a;background:#eef2ff;
-            border-radius:999px;padding:2px 8px;font-size:12px;margin-left:6px}
-.filters{display:flex;gap:12px;margin-bottom:20px}
-.badge{display:inline-block;background:#e0e7ff;color:#3730a3;font-weight:500;
-       padding:2px 8px;border-radius:8px;font-size:12px;margin-right:6px}
-.btn{background:#4338ca;color:#fff;text-decoration:none;font-weight:600;
-     padding:8px 14px;border-radius:8px;font-size:14px;display:inline-block;margin-top:8px}
+.school-tag{font-weight:600;color:#1e3a8a;background:#eef2ff;border-radius:999px;padding:2px 8px;font-size:12px;margin-left:6px}
+.filters{display:flex;gap:12px;margin-bottom:20px;align-items:center;flex-wrap:wrap}
+.badge{display:inline-block;background:#e0e7ff;color:#3730a3;font-weight:500;padding:2px 8px;border-radius:8px;font-size:12px;margin-right:6px}
+.btn{background:#4338ca;color:#fff;text-decoration:none;font-weight:600;padding:8px 14px;border-radius:8px;font-size:14px;display:inline-block;margin-top:8px}
 .desc{font-size:14px;line-height:1.4;color:#333}
 </style>
 
@@ -25,66 +20,100 @@ h1{font-size:22px;margin-bottom:1em}
   <input id="search" placeholder="Rechercher (titre, desc)" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ccc">
   <select id="school"><option value="">🏫 Toutes les écoles</option></select>
   <select id="city"><option value="">📍 Toutes les villes</option></select>
-  <label><input type="checkbox" id="onlineOnly"> En ligne uniquement</label>
+  <label style="display:flex;gap:6px;align-items:center">
+    <input type="checkbox" id="onlineOnly"> En ligne uniquement
+  </label>
 </div>
+
 <div id="list">Chargement...</div>
 
 <script>
-async function load() {
-  const r = await fetch("events.json");
+// --- helpers ---
+function cleanHtml(s){ return (s||'').replace(/<[^>]*>/g,''); }
+function toTitleCaseCity(s){
+  if(!s) return '';
+  let t = s.toString().trim().toLowerCase();
+  // TitleCase par mot, et par sous-mot séparé par '-'
+  return t.split(/\s+/).map(part =>
+    part.split('-').map(p => p ? p[0].toUpperCase()+p.slice(1) : p).join('-')
+  ).join(' ');
+}
+function normCity(s){ return toTitleCaseCity(s); } // valeur affichée & de comparaison
+
+async function load(){
+  const r = await fetch('events.json',{cache:'no-store'});
   const data = await r.json();
   window.allEvents = data;
   populateFilters(data);
-  render(data);
+  filter(); // affichage initial
 }
 
 function populateFilters(data){
   const schools=[...new Set(data.map(e=>e.school).filter(Boolean))].sort();
-  const cities=[...new Set(data.map(e=>e.city).filter(Boolean))].sort();
+  const citiesNorm=[...new Set(data.map(e=>normCity(e.city)).filter(Boolean))].sort();
+
   const sSel=document.getElementById('school');
   const cSel=document.getElementById('city');
+  const chk=document.getElementById('onlineOnly');
+
   schools.forEach(x=>sSel.innerHTML+=`<option>${x}</option>`);
-  cities.forEach(x=>cSel.innerHTML+=`<option>${x}</option>`);
-  [sSel,cSel,document.getElementById('search'),document.getElementById('onlineOnly')]
-    .forEach(el=>el.oninput=()=>filter());
+  citiesNorm.forEach(c=>{
+    const opt=document.createElement('option');
+    opt.value=c; opt.textContent=c; cSel.appendChild(opt);
+  });
+
+  const refresh=()=>filter();
+  [sSel,cSel,document.getElementById('search')].forEach(el=>el.oninput=refresh);
+
+  // ✅ bloquer "Ville" quand "En ligne uniquement" est coché
+  chk.onchange=()=>{
+    if(chk.checked){ cSel.disabled=true; cSel.value=''; }
+    else{ cSel.disabled=false; }
+    filter();
+  };
 }
 
 function filter(){
-  const s=document.getElementById('search').value.toLowerCase();
+  const s=(document.getElementById('search').value||'').toLowerCase();
   const school=document.getElementById('school').value;
-  const city=document.getElementById('city').value;
+  const citySel=document.getElementById('city').value; // déjà normalisé
   const onlineOnly=document.getElementById('onlineOnly').checked;
 
-  let f=window.allEvents.filter(e=>{
-    const t=`${e.title} ${e.description||''}`.toLowerCase();
-    return (!s || t.includes(s))
-        && (!school || e.school===school)
-        && (!city || e.city===city)
-        && (!onlineOnly || e.isOnline);
+  let f = window.allEvents.filter(e=>{
+    const hay=( (e.title||'') + ' ' + cleanHtml(e.description||'') + ' ' + (e.location||'') ).toLowerCase();
+    if(s && !hay.includes(s)) return false;
+    if(school && e.school!==school) return false;
+    if(onlineOnly && !e.isOnline) return false;
+    if(!onlineOnly && citySel){
+      if(normCity(e.city) !== citySel) return false; // comparaison insensible à la casse
+    }
+    return true;
   });
+
   render(f);
 }
 
 function render(data){
   const list=document.getElementById('list');
-  if(!data.length){list.innerHTML="<p>Aucun événement trouvé.</p>";return}
+  if(!data.length){ list.innerHTML='<p>Aucun événement trouvé.</p>'; return; }
 
-  list.innerHTML=data.map(d=>{
-    const start=new Date(d.start).toLocaleString('fr-FR',{dateStyle:'full',timeStyle:'short'});
-    const badge=d.isOnline
-      ? `<span class="badge">En ligne</span>`
-      : `<span class="badge">📍 ${d.city||''}</span>`;
-    const img=d.imageUrl?`<img src="${d.imageUrl}">`:"";
-    const cleanDesc=(d.description||'').replace(/<[^>]*>/g, '');
+  list.innerHTML = data.map(d=>{
+    const start = d.start ? new Date(d.start).toLocaleString('fr-FR',{dateStyle:'full',timeStyle:'short'}) : '';
+    const cityLabel = normCity(d.city);
+    const badge = d.isOnline ? `<span class="badge">En ligne</span>`
+                             : `<span class="badge">📍 ${cityLabel||''}</span>`;
+    const img = d.imageUrl ? `<img src="${d.imageUrl}" alt="">` : '';
+    const desc = cleanHtml(d.description||'').slice(0,200);
+
     return `
     <div class="event">
       ${img}
       <div>
-        <div class="meta">${badge} · ${start}</div>
+        <div class="meta">${badge}${start?` · ${start}`:''}</div>
         <div class="title"><strong>${d.title}</strong><span class="school-tag">${d.school}</span></div>
         <div class="meta">${d.location||''}</div>
-        <div class="desc">${cleanDesc.slice(0,200)}...</div>
-        <a class="btn" href="${d.url}" target="_blank">En savoir plus</a>
+        <div class="desc">${desc}...</div>
+        <a class="btn" href="${d.url}" target="_blank" rel="noopener">En savoir plus</a>
       </div>
     </div>`;
   }).join('');
