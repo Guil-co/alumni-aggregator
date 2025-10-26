@@ -15,7 +15,7 @@ body{font:16px system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0}
 
 h1{font-size:24px; margin:16px 0}
 
-/* Filtres : sticky desktop, SANS sticky en paysage/hauteur faible */
+/* Filtres : sticky desktop, pas sticky mobile/paysage */
 .filters{
   position:sticky; top:0; z-index:10;
   display:flex; gap:10px; align-items:center; flex-wrap:wrap;
@@ -23,15 +23,10 @@ h1{font-size:24px; margin:16px 0}
   background:#f7f8fbcc; backdrop-filter: blur(8px);
   border-bottom:1px solid #e5e8f3;
 }
-@media (max-width: 640px){
+@media (max-width: 640px),
+       (max-height: 520px),
+       (orientation: landscape) and (max-height: 600px){
   .filters{ position:static; backdrop-filter:none; background:transparent; border-bottom:none; margin:0 0 8px; padding:10px 0 }
-}
-/* paysage / petite hauteur -> jamais sticky */
-@media (max-height: 520px){
-  .filters{ position:static; backdrop-filter:none; background:transparent; border-bottom:none; }
-}
-@media (orientation: landscape) and (max-height: 600px){
-  .filters{ position:static; backdrop-filter:none; background:transparent; border-bottom:none; }
 }
 
 .input, select{
@@ -50,16 +45,15 @@ label.inline{display:flex; gap:8px; align-items:center; font-size:14px; color:va
   background:var(--card); border-radius:14px; padding:12px; margin:12px 0;
   box-shadow:var(--shadow); display:flex; gap:12px; align-items:flex-start; min-height:96px;
   transition:transform .12s ease, box-shadow .12s ease;
-  overflow:hidden; /* sécurité */
-  word-break:break-word; overflow-wrap:anywhere; /* ✅ casse les très longs mots/URL */
+  overflow:hidden; word-break:break-word; overflow-wrap:anywhere;
 }
 .card:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,.08) }
 
 .thumb{
-  width:160px; height:100px; border-radius:10px; object-fit:cover; flex:0 0 auto; /* ✅ pas d'étirement */
+  width:160px; height:100px; border-radius:10px; object-fit:cover; flex:0 0 auto;
 }
 @media (max-width:640px){ .thumb{ width:96px; height:64px } }
-@media (max-width:420px){ .thumb{ display:none } } /* ✅ cache la vignette sur très petits écrans */
+@media (max-width:420px){ .thumb{ display:none } }
 
 .meta{font-size:13px; color:var(--muted); margin:4px 0}
 .badge{display:inline-flex; align-items:center; gap:6px; padding:3px 8px; border-radius:999px;
@@ -101,7 +95,8 @@ label.inline{display:flex; gap:8px; align-items:center; font-size:14px; color:va
 const $ = s => document.querySelector(s);
 function cleanHtml(s){ return (s||'').replace(/<[^>]*>/g,''); }
 function toTitleCaseCity(s){
-  if(!s) return ''; let t=s.toString().trim().toLowerCase();
+  if(!s) return ''; 
+  let t=s.toString().trim().toLowerCase();
   return t.split(/\s+/).map(part=>part.split('-').map(p=>p? p[0].toUpperCase()+p.slice(1):p).join('-')).join(' ');
 }
 function normCity(s){ return toTitleCaseCity(s); }
@@ -176,7 +171,12 @@ function cardHtml(d){
   const city = normCity(d.city);
   const badge = d.isOnline ? `<span class="badge">En ligne</span>` : `<span class="badge">📍 ${city||''}</span>`;
   const img = d.imageUrl ? `<img class="thumb" loading="lazy" src="${d.imageUrl}" alt="">` : '';
-  const desc = cleanHtml(d.description||'').slice(0,260);
+
+  // Nettoyage de description : supprime adresse & débute au texte informatif
+  let rawDesc = cleanHtml(d.description||'').replace(/\s+/g,' ').trim();
+  rawDesc = rawDesc.replace(/^((?:[A-ZÉÈÀ][^.!?]{0,120}\d{2,5}.*?[,;]?\s*){0,2})/i,'');
+  rawDesc = rawDesc.replace(/^(?:Hôtel|Palais|Cercle|Rue|Avenue|Boulevard|Place|9bis|L’|Le\s|La\s)[^.!?]{0,100}/i,'');
+  const desc = rawDesc.slice(0,250);
 
   return `
     <article class="card">
