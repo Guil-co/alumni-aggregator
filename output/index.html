@@ -123,10 +123,49 @@ function populateFilters(data){
   if(chk.checked){ cSel.disabled=true; cSel.value=''; }
 }
 
+function getTopSectionKey(){
+  const heads = [...document.querySelectorAll('.section-title')];
+  if (!heads.length) return null;
+
+  // Stratégie robuste (mobile/desktop) :
+  // 1) On prend le header le plus proche du haut (>= 0)
+  // 2) Sinon, le dernier juste au-dessus (y < 0)
+  let closest = null, closestY = Infinity, lastAbove = null;
+
+  for (const h of heads) {
+    const y = h.getBoundingClientRect().top;
+    if (y >= 0 && y < closestY) { closest = h; closestY = y; }
+    if (y < 0) lastAbove = h;
+  }
+  const anchor = closest || lastAbove || heads[0];
+  return anchor ? (anchor.dataset.key || anchor.textContent.trim()) : null;
+}
+
+function scrollToSectionKey(key){
+  if (!key) return;
+  // On tente par data-key (fiable), sinon par texte
+  let target = document.querySelector(`.section-title[data-key="${key}"]`);
+  if (!target) {
+    target = [...document.querySelectorAll('.section-title')]
+      .find(h => h.textContent.trim() === key);
+  }
+  if (target) target.scrollIntoView({ behavior: 'instant', block: 'start' });
+}
+
 function onFiltersChange(){
+  // 🔖 ancre jour actuelle (indépendant du sticky)
+  const prevKey = getTopSectionKey();
+
   const chk=$('#onlineOnly'), cSel=$('#city');
   if(chk.checked){ cSel.disabled=true; cSel.value=''; } else { cSel.disabled=false; }
+
   renderFiltered();
+
+  // Attendre le repaint pour scroller exactement au même jour.
+  // Deux rafales pour laisser le DOM se stabiliser (images, etc.)
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => scrollToSectionKey(prevKey));
+  });
 }
 
 function renderFiltered(){
@@ -164,7 +203,8 @@ function renderGrouped(rows){
       ? 'Sans date'
       : new Date(day).toLocaleDateString('fr-FR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
     const cards = groups[day].map(cardHtml).join('');
-    return `<h2 class="section-title">${title}</h2>${cards}`;
+    // 👇 data-key pour retrouver exactement le même jour
+    return `<h2 class="section-title" data-key="${day}">${title}</h2>${cards}`;
   }).join('');
 }
 
