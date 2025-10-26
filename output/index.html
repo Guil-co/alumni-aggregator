@@ -1,122 +1,190 @@
-<!doctype html><meta charset="utf-8">
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Agenda Alumni – multi-écoles</title>
+
 <style>
-body{font:14px system-ui,Arial;margin:24px;background:#f9fafc;color:#111}
-h1{font-size:22px;margin-bottom:1em}
-.event{background:white;border-radius:12px;padding:16px;margin:12px 0;
-       display:flex;align-items:flex-start;gap:16px;box-shadow:0 1px 4px rgba(0,0,0,.05);min-height:120px}
-.event img{width:160px;height:100px;object-fit:cover;border-radius:8px;flex-shrink:0}
-.event>div{flex:1}
-.meta{font-size:13px;color:#555;margin:4px 0}
-.school-tag{font-weight:600;color:#1e3a8a;background:#eef2ff;border-radius:999px;padding:2px 8px;font-size:12px;margin-left:6px}
-.filters{display:flex;gap:12px;margin-bottom:20px;align-items:center;flex-wrap:wrap}
-.badge{display:inline-block;background:#e0e7ff;color:#3730a3;font-weight:500;padding:2px 8px;border-radius:8px;font-size:12px;margin-right:6px}
-.btn{background:#4338ca;color:#fff;text-decoration:none;font-weight:600;padding:8px 14px;border-radius:8px;font-size:14px;display:inline-block;margin-top:8px}
-.desc{font-size:14px;line-height:1.4;color:#333}
+:root{
+  --bg:#f7f8fb; --card:#fff; --text:#111; --muted:#555; --brand:#4338ca;
+  --chip-bg:#eef2ff; --chip:#1e3a8a; --shadow:0 1px 6px rgba(0,0,0,.06);
+  --border:#ccd2e4;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0f1220; --card:#151a2b; --text:#f5f7ff; --muted:#a7b0d0;
+         --chip-bg:#1f2a4a; --chip:#c9d4ff; --shadow:0 1px 10px rgba(0,0,0,.45); --border:#2a3354 }
+}
+html,body{background:var(--bg); color:var(--text)}
+body{font:16px system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0}
+.wrap{max-width:1100px; margin:0 auto; padding:0 16px 24px}
+
+h1{font-size:24px; margin:16px 0}
+
+/* Filtres : sticky par défaut (desktop), NON sticky en mobile */
+.filters{
+  position:sticky; top:0; z-index:10;
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+  padding:10px 16px; margin:0 -16px 8px;
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom:1px solid color-mix(in oklab, var(--border) 35%, transparent);
+}
+@media (max-width: 640px){
+  .filters{ position:static; backdrop-filter:none; border-bottom:none; margin:0 0 8px; padding:10px 0 }
+}
+
+.input, select{
+  font-size:16px; padding:10px 12px; border-radius:10px; border:1px solid var(--border);
+  background:var(--card); color:var(--text);
+}
+select:disabled{opacity:.55}
+label.inline{display:flex; gap:8px; align-items:center; font-size:14px; color:var(--muted)}
+
+.section-title{
+  margin:18px 0 8px; color:#374151; font-size:15px; font-weight:700; text-transform:capitalize;
+}
+@media (prefers-color-scheme: dark){ .section-title{ color:#cfd7f4 } }
+
+.card{
+  position:relative; background:var(--card); border-radius:14px; padding:14px; margin:12px 0;
+  box-shadow:var(--shadow); display:flex; gap:14px; align-items:flex-start; min-height:108px;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.card:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,.08) }
+.card a.whole{position:absolute; inset:0; border-radius:14px; outline:0}
+.card a.whole:focus-visible{box-shadow:0 0 0 3px color-mix(in oklab, var(--brand) 40%, transparent)}
+
+.thumb{width:160px; height:100px; border-radius:10px; object-fit:cover; flex-shrink:0}
+@media (max-width:360px){ .thumb{display:none} }
+
+.meta{font-size:13px; color:var(--muted); margin:4px 0}
+.badge{display:inline-flex; align-items:center; gap:6px; padding:3px 8px; border-radius:999px;
+       background:var(--chip-bg); color:var(--chip); font-size:12px; font-weight:600}
+.school{margin-left:8px}
+.title{font-weight:800; line-height:1.25; margin:4px 0 2px; display:flex; flex-wrap:wrap; gap:8px}
+.title > strong{font-size:16px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+.desc{font-size:14px; line-height:1.35; color:var(--muted); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
+.btn{position:relative; display:inline-block; margin-top:10px; background:var(--brand); color:#fff;
+     padding:10px 14px; border-radius:10px; font-weight:700; font-size:14px}
+.btn:focus-visible{outline:2px solid color-mix(in oklab, var(--brand) 60%, white)}
 </style>
 
-<h1>Agenda Alumni</h1>
-<div class="filters">
-  <input id="search" placeholder="Rechercher (titre, desc)" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ccc">
-  <select id="school"><option value="">🏫 Toutes les écoles</option></select>
-  <select id="city"><option value="">📍 Toutes les villes</option></select>
-  <label style="display:flex;gap:6px;align-items:center">
-    <input type="checkbox" id="onlineOnly"> En ligne uniquement
-  </label>
-</div>
+<div class="wrap">
+  <h1>Agenda Alumni</h1>
 
-<div id="list">Chargement...</div>
+  <div class="filters">
+    <input id="search" class="input" placeholder="Rechercher (titre, description)" style="flex:1;min-width:220px">
+    <select id="school"><option value="">🏫 Toutes les écoles</option></select>
+    <select id="city"><option value="">📍 Toutes les villes</option></select>
+    <label class="inline"><input type="checkbox" id="onlineOnly"> En ligne uniquement</label>
+  </div>
+
+  <div id="list">Chargement…</div>
+</div>
 
 <script>
 // --- helpers ---
+const $ = sel => document.querySelector(sel);
 function cleanHtml(s){ return (s||'').replace(/<[^>]*>/g,''); }
 function toTitleCaseCity(s){
   if(!s) return '';
   let t = s.toString().trim().toLowerCase();
-  // TitleCase par mot, et par sous-mot séparé par '-'
   return t.split(/\s+/).map(part =>
     part.split('-').map(p => p ? p[0].toUpperCase()+p.slice(1) : p).join('-')
   ).join(' ');
 }
-function normCity(s){ return toTitleCaseCity(s); } // valeur affichée & de comparaison
+function normCity(s){ return toTitleCaseCity(s); }
 
 async function load(){
-  const r = await fetch('events.json',{cache:'no-store'});
+  const r = await fetch('events.json', {cache:'no-store'});
   const data = await r.json();
   window.allEvents = data;
   populateFilters(data);
-  filter(); // affichage initial
+  renderFiltered();
 }
 
 function populateFilters(data){
   const schools=[...new Set(data.map(e=>e.school).filter(Boolean))].sort();
-  const citiesNorm=[...new Set(data.map(e=>normCity(e.city)).filter(Boolean))].sort();
+  const cities=[...new Set(data.map(e=>normCity(e.city)).filter(Boolean))].sort();
 
-  const sSel=document.getElementById('school');
-  const cSel=document.getElementById('city');
-  const chk=document.getElementById('onlineOnly');
-
+  const sSel=$('#school'), cSel=$('#city'), q=$('#search'), chk=$('#onlineOnly');
   schools.forEach(x=>sSel.innerHTML+=`<option>${x}</option>`);
-  citiesNorm.forEach(c=>{
-    const opt=document.createElement('option');
-    opt.value=c; opt.textContent=c; cSel.appendChild(opt);
-  });
+  cities.forEach(c=>cSel.innerHTML+=`<option>${c}</option>`);
 
-  const refresh=()=>filter();
-  [sSel,cSel,document.getElementById('search')].forEach(el=>el.oninput=refresh);
+  [sSel,cSel,q,chk].forEach(el=>el.addEventListener('input', onFiltersChange));
+  chk.addEventListener('change', onFiltersChange);
 
-  // ✅ bloquer "Ville" quand "En ligne uniquement" est coché
-  chk.onchange=()=>{
-    if(chk.checked){ cSel.disabled=true; cSel.value=''; }
-    else{ cSel.disabled=false; }
-    filter();
-  };
+  if(chk.checked){ cSel.disabled=true; cSel.value=''; }
 }
 
-function filter(){
-  const s=(document.getElementById('search').value||'').toLowerCase();
-  const school=document.getElementById('school').value;
-  const citySel=document.getElementById('city').value; // déjà normalisé
-  const onlineOnly=document.getElementById('onlineOnly').checked;
+function onFiltersChange(){
+  const chk=$('#onlineOnly'), cSel=$('#city');
+  if(chk.checked){ cSel.disabled=true; cSel.value=''; } else { cSel.disabled=false; }
+  renderFiltered();
+}
 
-  let f = window.allEvents.filter(e=>{
-    const hay=( (e.title||'') + ' ' + cleanHtml(e.description||'') + ' ' + (e.location||'') ).toLowerCase();
-    if(s && !hay.includes(s)) return false;
+function renderFiltered(){
+  const q=($('#search').value||'').toLowerCase();
+  const school=$('#school').value;
+  const citySel=$('#city').value; // déjà normalisé
+  const onlineOnly=$('#onlineOnly').checked;
+
+  const filtered = window.allEvents.filter(e=>{
+    const hay = (`${e.title||''} ${cleanHtml(e.description||'')} ${e.location||''}`).toLowerCase();
+    if(q && !hay.includes(q)) return false;
     if(school && e.school!==school) return false;
     if(onlineOnly && !e.isOnline) return false;
-    if(!onlineOnly && citySel){
-      if(normCity(e.city) !== citySel) return false; // comparaison insensible à la casse
-    }
+    if(!onlineOnly && citySel && normCity(e.city)!==citySel) return false;
     return true;
   });
 
-  render(f);
+  renderGrouped(filtered);
 }
 
-function render(data){
-  const list=document.getElementById('list');
-  if(!data.length){ list.innerHTML='<p>Aucun événement trouvé.</p>'; return; }
+/* ---------- Groupement par jour ---------- */
+function renderGrouped(rows){
+  const list=$('#list');
+  if(!rows.length){ list.innerHTML='<p style="color:var(--muted)">Aucun événement trouvé.</p>'; return; }
 
-  list.innerHTML = data.map(d=>{
-    const start = d.start ? new Date(d.start).toLocaleString('fr-FR',{dateStyle:'full',timeStyle:'short'}) : '';
-    const cityLabel = normCity(d.city);
-    const badge = d.isOnline ? `<span class="badge">En ligne</span>`
-                             : `<span class="badge">📍 ${cityLabel||''}</span>`;
-    const img = d.imageUrl ? `<img src="${d.imageUrl}" alt="">` : '';
-    const desc = cleanHtml(d.description||'').slice(0,200);
+  // group by YYYY-MM-DD
+  const groups = {};
+  for(const d of rows){
+    const key = d.start ? new Date(d.start).toISOString().slice(0,10) : 'sans-date';
+    (groups[key] ||= []).push(d);
+  }
 
-    return `
-    <div class="event">
+  const days = Object.keys(groups).sort(); // asc
+
+  const sections = days.map(day=>{
+    const title = (day==='sans-date')
+      ? 'Sans date'
+      : new Date(day).toLocaleDateString('fr-FR', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+    const cards = groups[day].map(cardHtml).join('');
+    return `<h3 class="section-title">${title}</h3>${cards}`;
+  }).join('');
+
+  list.innerHTML = sections;
+}
+
+function cardHtml(d){
+  const start = d.start ? new Date(d.start).toLocaleString('fr-FR',
+    {weekday:'long', year:'numeric', month:'long', day:'numeric', hour:'2-digit', minute:'2-digit'}) : '';
+  const city = normCity(d.city);
+  const badge = d.isOnline ? `<span class="badge">En ligne</span>` : `<span class="badge">📍 ${city||''}</span>`;
+  const img = d.imageUrl ? `<img class="thumb" loading="lazy" src="${d.imageUrl}" alt="">` : '';
+  const desc = cleanHtml(d.description||'').slice(0,260);
+
+  return `
+    <article class="card">
+      <a class="whole" href="${d.url}" target="_blank" rel="noopener" aria-label="Ouvrir : ${d.title}"></a>
       ${img}
       <div>
         <div class="meta">${badge}${start?` · ${start}`:''}</div>
-        <div class="title"><strong>${d.title}</strong><span class="school-tag">${d.school}</span></div>
+        <div class="title"><strong>${d.title}</strong><span class="badge school">${d.school}</span></div>
         <div class="meta">${d.location||''}</div>
-        <div class="desc">${desc}...</div>
+        <p class="desc">${desc}…</p>
         <a class="btn" href="${d.url}" target="_blank" rel="noopener">En savoir plus</a>
       </div>
-    </div>`;
-  }).join('');
+    </article>`;
 }
 
 load();
