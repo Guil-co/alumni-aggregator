@@ -15,7 +15,7 @@ body{font:16px system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0}
 
 h1{font-size:24px; margin:16px 0}
 
-/* Filtres : sticky desktop, non-sticky mobile/paysage */
+/* Filtres : sticky desktop, non-sticky mobile/paysage/hauteur faible */
 .filters{
   position:sticky; top:0; z-index:10;
   display:flex; gap:10px; align-items:center; flex-wrap:wrap;
@@ -40,10 +40,10 @@ label.inline{display:flex; gap:8px; align-items:center; font-size:14px; color:va
   margin:18px 0 8px; color:#374151; font-size:20px; font-weight:800; text-transform:capitalize;
 }
 
-/* Cartes compactes */
+/* Cartes compactes et robustes */
 .card{
-  background:var(--card); border-radius:14px; padding:12px; margin:12px 0;
-  box-shadow:var(--shadow); display:flex; gap:12px; align-items:flex-start; min-height:96px;
+  background:var(--card); border-radius:14px; padding:12px 14px; margin:12px 0;
+  box-shadow:var(--shadow); display:flex; gap:12px; align-items:center; min-height:84px;
   transition:transform .12s ease, box-shadow .12s ease;
   overflow:hidden; word-break:break-word; overflow-wrap:anywhere;
 }
@@ -55,27 +55,43 @@ label.inline{display:flex; gap:8px; align-items:center; font-size:14px; color:va
 @media (max-width:640px){ .thumb{ width:96px; height:64px } }
 @media (max-width:420px){ .thumb{ display:none } }
 
-.meta{font-size:13px; color:var(--muted); margin:4px 0}
+.card .main{display:flex; align-items:center; gap:12px; width:100%}
+.card .text{flex:1 1 auto; min-width:0}
+
+.meta{font-size:13px; color:var(--muted); margin:2px 0 4px}
 .badge{display:inline-flex; align-items:center; gap:6px; padding:3px 8px; border-radius:999px;
        background:var(--chip-bg); color:var(--chip); font-size:12px; font-weight:600}
 .school{margin-left:8px}
-.title{font-weight:800; line-height:1.25; margin:2px 0 2px; display:flex; flex-wrap:wrap; gap:8px}
+.title{font-weight:800; line-height:1.25; margin:0 0 2px; display:flex; flex-wrap:wrap; gap:8px}
 .title > strong{
-  font-size:16px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  font-size:16px; display:-webkit-box; -webkit-line-clamp:2; line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
 }
-@media (max-width:640px){ .title > strong{ font-size:15px; -webkit-line-clamp:2 } }
+@media (max-width:640px){ .title > strong{ font-size:15px; -webkit-line-clamp:2; line-clamp:2 } }
 
 .desc{
   font-size:14px; line-height:1.35; color:var(--muted);
-  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+  display:-webkit-box; -webkit-line-clamp:3; line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
 }
-@media (max-width:640px){ .desc{ -webkit-line-clamp:2 } }
+@media (max-width:640px){ .desc{ -webkit-line-clamp:2; line-clamp:2 } }
 
 .btn{
-  display:inline-block; margin-top:10px; background:var(--brand); color:#fff;
-  padding:10px 14px; border-radius:10px; font-weight:700; font-size:14px; text-decoration:none;
+  display:inline-block; background:var(--brand); color:#fff;
+  padding:8px 12px; border-radius:10px; font-weight:700; font-size:13px;
+  text-decoration:none; white-space:nowrap; margin-top:0;
 }
 .btn:focus-visible{outline:2px solid #6d64ff}
+
+/* Flèche mobile */
+.icon-btn{
+  display:none;
+  width:36px; height:36px; border-radius:10px; background:var(--brand);
+  color:#fff; align-items:center; justify-content:center; text-decoration:none; flex:0 0 auto;
+}
+.icon-btn svg{width:18px; height:18px; display:block}
+@media (max-width:640px){
+  .btn{display:none}
+  .icon-btn{display:inline-flex}
+}
 </style>
 
 <div class="wrap">
@@ -92,7 +108,7 @@ label.inline{display:flex; gap:8px; align-items:center; font-size:14px; color:va
 </div>
 
 <script>
-// utilitaires
+// ------- Helpers -------
 const $ = s => document.querySelector(s);
 function cleanHtml(s){ return (s||'').replace(/<[^>]*>/g,''); }
 function toTitleCaseCity(s){
@@ -102,16 +118,20 @@ function toTitleCaseCity(s){
 }
 function normCity(s){ return toTitleCaseCity(s); }
 
-// chargement
+// ------- Load -------
 async function load(){
   const r = await fetch('events.json',{cache:'no-store'});
   const data = await r.json();
   window.allEvents = data;
   populateFilters(data);
   renderFiltered();
+
+  // Au 1er chargement : se placer sur "aujourd'hui" si présent
+  const todayISO = new Date().toISOString().slice(0,10);
+  requestAnimationFrame(()=>scrollToSectionKey(todayISO));
 }
 
-// filtres
+// ------- Filters UI -------
 function populateFilters(data){
   const schools=[...new Set(data.map(e=>e.school).filter(Boolean))].sort();
   const cities=[...new Set(data.map(e=>normCity(e.city)).filter(Boolean))].sort();
@@ -123,37 +143,8 @@ function populateFilters(data){
   if(chk.checked){ cSel.disabled=true; cSel.value=''; }
 }
 
-function getTopSectionKey(){
-  const heads = [...document.querySelectorAll('.section-title')];
-  if (!heads.length) return null;
-
-  // Stratégie robuste (mobile/desktop) :
-  // 1) On prend le header le plus proche du haut (>= 0)
-  // 2) Sinon, le dernier juste au-dessus (y < 0)
-  let closest = null, closestY = Infinity, lastAbove = null;
-
-  for (const h of heads) {
-    const y = h.getBoundingClientRect().top;
-    if (y >= 0 && y < closestY) { closest = h; closestY = y; }
-    if (y < 0) lastAbove = h;
-  }
-  const anchor = closest || lastAbove || heads[0];
-  return anchor ? (anchor.dataset.key || anchor.textContent.trim()) : null;
-}
-
-function scrollToSectionKey(key){
-  if (!key) return;
-  // On tente par data-key (fiable), sinon par texte
-  let target = document.querySelector(`.section-title[data-key="${key}"]`);
-  if (!target) {
-    target = [...document.querySelectorAll('.section-title')]
-      .find(h => h.textContent.trim() === key);
-  }
-  if (target) target.scrollIntoView({ behavior: 'instant', block: 'start' });
-}
-
 function onFiltersChange(){
-  // 🔖 ancre jour actuelle (indépendant du sticky)
+  // ancre jour visible avant re-render
   const prevKey = getTopSectionKey();
 
   const chk=$('#onlineOnly'), cSel=$('#city');
@@ -161,20 +152,26 @@ function onFiltersChange(){
 
   renderFiltered();
 
-  // Attendre le repaint pour scroller exactement au même jour.
-  // Deux rafales pour laisser le DOM se stabiliser (images, etc.)
+  // restaurer exactement le même jour (si toujours présent)
   requestAnimationFrame(() => {
     requestAnimationFrame(() => scrollToSectionKey(prevKey));
   });
 }
 
+// ------- Filtering (>= aujourd'hui) -------
 function renderFiltered(){
   const q=($('#search').value||'').toLowerCase();
   const school=$('#school').value;
   const citySel=$('#city').value;
   const onlineOnly=$('#onlineOnly').checked;
 
+  const today = new Date(); today.setHours(0,0,0,0);
+
   const filtered = window.allEvents.filter(e=>{
+    if (e.start) {
+      const d = new Date(e.start);
+      if (d < today) return false; // exclut tout avant aujourd'hui
+    }
     const hay = (`${e.title||''} ${cleanHtml(e.description||'')} ${e.location||''}`).toLowerCase();
     if(q && !hay.includes(q)) return false;
     if(school && e.school!==school) return false;
@@ -186,7 +183,7 @@ function renderFiltered(){
   renderGrouped(filtered);
 }
 
-// groupement par jour
+// ------- Grouping by day (adds data-key) -------
 function renderGrouped(rows){
   const list=$('#list');
   if(!rows.length){ list.innerHTML='<p style="color:#666">Aucun événement trouvé.</p>'; return; }
@@ -203,12 +200,35 @@ function renderGrouped(rows){
       ? 'Sans date'
       : new Date(day).toLocaleDateString('fr-FR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
     const cards = groups[day].map(cardHtml).join('');
-    // 👇 data-key pour retrouver exactement le même jour
     return `<h2 class="section-title" data-key="${day}">${title}</h2>${cards}`;
   }).join('');
 }
 
-// une carte
+// ------- Anchor helpers (by key) -------
+function getTopSectionKey(){
+  const heads = [...document.querySelectorAll('.section-title')];
+  if (!heads.length) return null;
+  let closest = null, closestY = Infinity, lastAbove = null;
+  for (const h of heads) {
+    const y = h.getBoundingClientRect().top;
+    if (y >= 0 && y < closestY) { closest = h; closestY = y; }
+    if (y < 0) lastAbove = h;
+  }
+  const anchor = closest || lastAbove || heads[0];
+  return anchor ? (anchor.dataset.key || anchor.textContent.trim()) : null;
+}
+
+function scrollToSectionKey(key){
+  if (!key) return;
+  let target = document.querySelector(`.section-title[data-key="${key}"]`);
+  if (!target) {
+    target = [...document.querySelectorAll('.section-title')]
+      .find(h => h.textContent.trim() === key);
+  }
+  if (target) target.scrollIntoView({ behavior: 'instant', block: 'start' });
+}
+
+// ------- Card renderer (compact, CTA right / arrow mobile) -------
 function cardHtml(d){
   const start = d.start ? new Date(d.start).toLocaleString('fr-FR',
     {weekday:'long', year:'numeric', month:'long', day:'numeric', hour:'2-digit', minute:'2-digit'}) : '';
@@ -216,22 +236,29 @@ function cardHtml(d){
   const badge = d.isOnline ? `<span class="badge">En ligne</span>` : `<span class="badge">📍 ${city||''}</span>`;
   const img = d.imageUrl ? `<img class="thumb" loading="lazy" src="${d.imageUrl}" alt="">` : '';
 
-  // Nettoyage description : supprime l'adresse et commence par le texte informatif
+  // Description : retire l'adresse en tête, ne garde que le texte utile
   let rawDesc = cleanHtml(d.description||'').replace(/\s+/g,' ').trim();
-  // supprime 1–2 segments d’adresse en tête (ex: "HEC Alumni, 9 Av. Franklin Delano Roosevelt, 75008, PARIS, FR")
   rawDesc = rawDesc.replace(/^((?:[A-ZÉÈÀ][^.!?]{0,120}\d{2,5}.*?[,;]?\s*){0,2})/i,'');
-  // supprime un autre préfixe type lieu
   rawDesc = rawDesc.replace(/^(?:H[EÉ]C Alumni|Hôtel|Palais|Cercle|Rue|Avenue|Boulevard|Place|9bis|L’|Le\s|La\s)[^.!?]{0,120}/i,'');
-  const desc = rawDesc.slice(0,250);
+  const desc = rawDesc.slice(0,220);
+
+  const url = d.url;
 
   return `
     <article class="card">
       ${img}
-      <div>
-        <div class="meta">${badge}${start?` · ${start}`:''}</div>
-        <div class="title"><strong>${d.title}</strong><span class="badge school">${d.school}</span></div>
-        <p class="desc">${desc}…</p>
-        <a class="btn" href="${d.url}" target="_blank" rel="noopener">En savoir plus</a>
+      <div class="main">
+        <div class="text">
+          <div class="meta">${badge}${start?` · ${start}`:''}</div>
+          <div class="title"><strong>${d.title}</strong><span class="badge school">${d.school}</span></div>
+          <p class="desc">${desc}…</p>
+        </div>
+        <a class="btn" href="${url}" target="_blank" rel="noopener">En savoir plus</a>
+        <a class="icon-btn" href="${url}" target="_blank" rel="noopener" aria-label="Ouvrir l’événement">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M8 5l8 7-8 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </div>
     </article>`;
 }
