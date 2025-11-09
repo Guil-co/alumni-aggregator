@@ -1,0 +1,213 @@
+[
+  {
+    "id": 190511,
+    "display_price_tag": true,
+    "end_date": "2025-10-13T20:00:00+02:00",
+    "participant_display_threshold": null,
+    "show_webinar_url": false,
+    "start_date": "2025-10-13T18:00:00+02:00",
+    "timezone": "Europe/Paris",
+    "title": "242ème Réunion CLENAM/CRA du lundi 13 octobre 2025 de 18h00 à 20h00",
+    "webinar_url": "",
+    "participation_type": "tickets",
+    "created_at": "2025-09-05T15:15:56+02:00",
+    "updated_at": "2025-09-12T12:34:03+02:00",
+    "feedable_at": "2025-09-12T12:34:03+02:00",
+    "published_at": "2025-09-12T12:34:03+02:00",
+    "cancelled_at": null,
+    "type": "network_events_event",
+    "organizer": {
+      "name": "Soce - Arts & Metiers Alumni",
+      "id": 628,
+      "type": "Network"
+    },
+    "locations": {
+      "address": "10 Terr. Bellini, 92800 Puteaux, France",
+      "lat": "48.886662",
+      "lng": "2.251615"
+    },
+    "linked_topic_ids": [
+      27265
+    ],
+    "has_attendees": false,
+    "organizer_logo_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+    "cancelled": false,
+    "network_categories": [
+      {
+        "id": 155163,
+        "name": "Clenam"
+      }
+    ],
+    "is_internal_zoom_meeting": false,
+    "new_cover_picture": {
+      "original_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/190511/compressed-ee7ecd5d1625cbc19a3abc3da0b23cdf.webp",
+      "compressed_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/190511/compressed-ee7ecd5d1625cbc19a3abc3da0b23cdf.webp",
+      "download_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/190511/0f13bc574ab1e78cf53547f480342f58?response-content-disposition=attachment%3B+filename%3D%22data%22%3B+filename*%3DUTF-8%27%27data",
+      "thumbnail_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/190511/thumbnail-33fc92a13bbbfd963ec9e645ec8f94a3.webp",
+      "preview_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/190511/large-463b8f5cfefda104a06b984b73971ec0.webp",
+      "icon_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/190511/icon-5f21c9c79268771926797cf39ba8efcb.webp",
+      "friend_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/190511/0f13bc574ab1e78cf53547f480342f58",
+      "mini_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/190511/0f13bc574ab1e78cf53547f480342f58",
+      "medium_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/190511/medium-a3dc95a5fb5a88016e08c651e24d0508.webp",
+      "wide_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/190511/0f13bc574ab1e78cf53547f480342f58",
+      "html_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/190511/0f13bc574ab1e78cf53547f480342f58",
+      "id": 3722971,
+      "byte_size": 8478,
+      "filename": "data",
+      "mime_type": "image/jpeg",
+      "virus_scan_status": "succeed",
+      "default_url": "https://hivebrite.com/images/missing/network_event/cover_picture/default.jpg",
+      "file_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/190511/large-463b8f5cfefda104a06b984b73971ec0.webp",
+      "size": 8478,
+      "name": "data",
+      "file_name": "data"
+    },
+    "new_logo": {
+      "original_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+      "compressed_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+      "download_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+      "thumbnail_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+      "preview_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+      "icon_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+      "friend_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+      "mini_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+      "medium_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+      "wide_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+      "html_url": "",
+      "id": null,
+      "byte_size": null,
+      "filename": null,
+      "mime_type": null,
+      "virus_scan_status": null,
+      "default_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+      "file_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+      "size": null,
+      "name": null,
+      "file_name": null
+    }
+  },
+  {
+    "id": 192533,
+    "display_price_tag": false,
+    "end_date": "2025-10-17T18:30:00+02:00",
+    "participant_display_threshold": null,
+    "show_webinar_url": false,
+    "start_date": "2025-10-13T18:30:00+02:00",
+    "timezone": "Europe/Paris",
+    "title": "Rencontres Whats4u du 13 - 17 octobre",
+    "webinar_url": "",
+    "participation_type": "no_participation",
+    "created_at": "2025-09-30T16:48:29+02:00",
+    "updated_at": "2025-10-28T10:42:06+01:00",
+    "feedable_at": "2025-09-30T17:06:41+02:00",
+    "published_at": "2025-09-30T17:06:41+02:00",
+    "cancelled_at": null,
+    "type": "network_events_event",
+    "organizer": {
+      "name": "Soce - Arts & Metiers Alumni",
+      "id": 628,
+      "type": "Network"
+    },
+    "locations": {
+      "address": "8th arrondissement, 75008 Paris, France",
+      "lat": "48.868962",
+      "lng": "2.310141"
+    },
+    "linked_topic_ids": [
+      29144
+    ],
+    "has_attendees": false,
+    "organizer_logo_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+    "cancelled": false,
+    "network_categories": [
+      {
+        "id": 37616,
+        "name": "Pôle Carrières"
+      }
+    ],
+    "is_internal_zoom_meeting": false,
+    "new_cover_picture": {
+      "original_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/192533/compressed-b9bca750d93e548aeaf174e2b140854a.webp",
+      "compressed_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/192533/compressed-b9bca750d93e548aeaf174e2b140854a.webp",
+      "download_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/192533/db6757e1e98647c763e6d56c0e22dc81.jpg?response-content-disposition=attachment%3B+filename%3D%22banniere+rencontres+oct+2025+FR.jpg%22%3B+filename*%3DUTF-8%27%27banniere%2520rencontres%2520oct%25202025%2520FR.jpg",
+      "thumbnail_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/192533/thumbnail-ad274c1689e49b01c8e209ef925f15e0.webp",
+      "preview_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/192533/large-7707db2521517c501971d7f89059ff7d.webp",
+      "icon_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/192533/icon-e98dea2cc3a1d4fbe63ad2fea0daa8b5.webp",
+      "friend_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/192533/db6757e1e98647c763e6d56c0e22dc81.jpg",
+      "mini_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/192533/db6757e1e98647c763e6d56c0e22dc81.jpg",
+      "medium_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/192533/medium-4c3644ea8710c5b969870728f6f4a8e1.webp",
+      "wide_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/192533/db6757e1e98647c763e6d56c0e22dc81.jpg",
+      "html_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/192533/db6757e1e98647c763e6d56c0e22dc81.jpg",
+      "id": 3820094,
+      "byte_size": 285815,
+      "filename": "banniere rencontres oct 2025 FR.jpg",
+      "mime_type": "image/jpeg",
+      "virus_scan_status": "succeed",
+      "default_url": "https://hivebrite.com/images/missing/network_event/cover_picture/default.jpg",
+      "file_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/192533/large-7707db2521517c501971d7f89059ff7d.webp",
+      "size": 285815,
+      "name": "banniere rencontres oct 2025 FR.jpg",
+      "file_name": "banniere rencontres oct 2025 FR.jpg"
+    }
+  },
+  {
+    "id": 191456,
+    "display_price_tag": false,
+    "end_date": "2025-10-14T14:00:00+02:00",
+    "participant_display_threshold": null,
+    "show_webinar_url": false,
+    "start_date": "2025-10-14T12:30:00+02:00",
+    "timezone": "Europe/Paris",
+    "title": "Réussir sa reconversion professionnelle",
+    "webinar_url": "https://zoom.us/j/99602042946?pwd=KoqafytVpgChBcome5DrPiFbBWChf6.1",
+    "participation_type": "tickets",
+    "created_at": "2025-09-17T10:46:38+02:00",
+    "updated_at": "2025-10-07T11:01:36+02:00",
+    "feedable_at": "2025-09-17T15:15:33+02:00",
+    "published_at": "2025-09-17T15:15:33+02:00",
+    "cancelled_at": null,
+    "type": "network_events_event",
+    "organizer": {
+      "name": "Soce - Arts & Metiers Alumni",
+      "id": 628,
+      "type": "Network"
+    },
+    "locations": null,
+    "linked_topic_ids": [
+      29144
+    ],
+    "has_attendees": true,
+    "organizer_logo_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/networks/628/thumb-28ceac9717515ca0ea9e6011a28a4ab3.webp",
+    "cancelled": false,
+    "network_categories": [
+      {
+        "id": 37616,
+        "name": "Pôle Carrières"
+      }
+    ],
+    "is_internal_zoom_meeting": false,
+    "new_cover_picture": {
+      "original_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/191456/compressed-339e7189656d3e1d2d39039facdfb040.webp",
+      "compressed_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/191456/compressed-339e7189656d3e1d2d39039facdfb040.webp",
+      "download_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/191456/8332589b789bfc1d18d21876946622f1.png?response-content-disposition=attachment%3B+filename%3D%22_R%253Fussir+sa+reconversion+professionnelle+.png%22%3B+filename*%3DUTF-8%27%27_R%25C3%25A9ussir%2520sa%2520reconversion%2520professionnelle%2520.png",
+      "thumbnail_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/191456/thumbnail-474a93e95a32ac1568c452f68e12108e.webp",
+      "preview_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/191456/large-1078f18381d04bfa0ec68e7a32f61782.webp",
+      "icon_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/191456/icon-c5a74dabce34116649d720db05199448.webp",
+      "friend_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/191456/8332589b789bfc1d18d21876946622f1.png",
+      "mini_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/191456/8332589b789bfc1d18d21876946622f1.png",
+      "medium_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/191456/medium-d17d1c593aa702e011ede35c7c8a9836.webp",
+      "wide_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/191456/8332589b789bfc1d18d21876946622f1.png",
+      "html_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/191456/8332589b789bfc1d18d21876946622f1.png",
+      "id": 3760693,
+      "byte_size": 2895667,
+      "filename": "_Réussir sa reconversion professionnelle .png",
+      "mime_type": "image/png",
+      "virus_scan_status": "succeed",
+      "default_url": "https://hivebrite.com/images/missing/network_event/cover_picture/default.jpg",
+      "file_url": "https://d1c2gz5q23tkk0.cloudfront.net/shrine_store/uploads/networks/628/ne_events/191456/large-1078f18381d04bfa0ec68e7a32f61782.webp",
+      "size": 2895667,
+      "name": "_Réussir sa reconversion professionnelle .png",
+      "file_name": "_Réussir sa reconversion professionnelle .png"
+    }
+  }
+]

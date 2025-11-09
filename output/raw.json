@@ -1,0 +1,967 @@
+{
+  "page": 1,
+  "limit": 12,
+  "pages": 12,
+  "total": 136,
+  "_links": {
+    "self": {
+      "href": "/api/v2/public/agenda/occurrence/visitor/occurrence?language=auto&published=1&order%5C%5Bbegin_at%5C%5D=asc&when=upcoming&properties%5C%5B0%5C%5D=group&page=1&limit=12"
+    },
+    "first": {
+      "href": "/api/v2/public/agenda/occurrence/visitor/occurrence?language=auto&published=1&order%5C%5Bbegin_at%5C%5D=asc&when=upcoming&properties%5C%5B0%5C%5D=group&page=1&limit=12"
+    },
+    "last": {
+      "href": "/api/v2/public/agenda/occurrence/visitor/occurrence?language=auto&published=1&order%5C%5Bbegin_at%5C%5D=asc&when=upcoming&properties%5C%5B0%5C%5D=group&page=12&limit=12"
+    },
+    "next": {
+      "href": "/api/v2/public/agenda/occurrence/visitor/occurrence?language=auto&published=1&order%5C%5Bbegin_at%5C%5D=asc&when=upcoming&properties%5C%5B0%5C%5D=group&page=2&limit=12"
+    }
+  },
+  "_embedded": {
+    "items": [
+      {
+        "id": "6848",
+        "title": "Webinaire : Se présenter efficacement en entretien : le Pitch 3 minutes",
+        "description": "Se présenter efficacement en entretien : le Pitch 3 minutesCe webinaire est pour vous si vous souhaitez :• Faire la différence et convaincre en entretien grâce à une présentation impactante et ciblée. L’objectif est de vous permettre :• D’apprendre à vous présenter en 3 min (présentation de début d’entretien des recruteurs, chasseurs de tête, DRH)• De mesurer et d’améliorer l’impact de votre communication verbale et non-verbale  Au programme• Apport de contenu sur le verbal et non verbal, et notamment d’une structure de Pitch Modalités • Webinaire • Durée : 1h L’intervenante Laurence Ménard-Zantman : Diplômée de l’ESCP Business School, Coach certifiée, Laurence accompagne en coaching et en outplacement les cadres dirigeants tout au long de leur vie professionnelle. Sa pratique s’appuie sur plus de 20 ans d’expérience managériale dans des fonctions de Direction Marketing au sein de sociétés internationales. Laurence est animée par la passion de l’humain et le sens de l’engagement, mais aussi par la culture du résultat et de l’excellence. Elle est actuellement Directrice Générale au sein du Cabinet L'Espace Dirigeants. https://www.linkedin.com/in/laurencemenardzantman/#carriererechercheemploi#carriereprojettransition",
+        "website": "",
+        "webinar_url": "",
+        "is_webinar": true,
+        "begin_at": "2025-11-07 13:00:00",
+        "end_at": "2025-11-07 14:00:00",
+        "time_zone": "Europe/Paris",
+        "created": "2024-12-12 12:44:12",
+        "updated": "2025-07-10 09:52:02",
+        "cover": "https://www.essecalumni.com/medias/image/420391799686f70e03d11b.png",
+        "thumbnail": "https://www.essecalumni.com/medias/image/thumbnail_420391799686f70e03d11b.png",
+        "is_on_site": false,
+        "seat_available": "19",
+        "is_replay_restricted_to_participants": false,
+        "web_url": "https://www.essecalumni.com/event/webinaire-se-presenter-efficacement-en-entretien-le-pitch-3-minutes/2025/10/22/6848",
+        "seat_available_count": 19,
+        "preview_picture_url": "https://www.essecalumni.com/medias/image/thumbnail_420391799686f70e03d11b.png",
+        "am_i_participating": false,
+        "attendee_count": 16,
+        "show_nb_attendees": true,
+        "comment_count": 0,
+        "like_count": 0,
+        "limited": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/agenda/occurrence/6848"
+          }
+        },
+        "_embedded": {
+          "address": {
+            "venue": "Webinaire",
+            "address": "",
+            "address_2": "",
+            "city": "",
+            "zip": "",
+            "country_iso": ""
+          },
+          "author": {
+            "id": "55438",
+            "name": "ESSEC Alumni",
+            "email": "",
+            "avatar": {
+              "user_id": "55438",
+              "display_name": "ESSEC Alumni",
+              "profile_photo": "https://www.essecalumni.com/medias/profile/15133969625d11173a7778e.png",
+              "color": "#d7f8ee",
+              "initials": "EA",
+              "_links": {
+                "self": {
+                  "href": "/api/v2/profile/people/55438"
+                }
+              }
+            },
+            "_links": {
+              "self": {
+                "href": "/api/v2/profile/people/55438"
+              }
+            }
+          },
+          "status": {
+            "id": "1",
+            "name": "0",
+            "label": "Publié"
+          },
+          "category": {
+            "id": "315",
+            "name": "Carrière",
+            "_links": {
+              "self": {
+                "href": "/api/v2/agenda/category/315"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "6855",
+        "title": "Formation pratique : Comment pitcher en 3 minutes en transition professionnelle ?",
+        "description": "Comment pitcher en 3 minutes en transition professionnelle ?Mardi 2 décembre - 8 h 45 à 12 h 45Tout au long de votre parcours professionnel, vous allez devoir vous présenter en 1 à 3 minutes lors de rendez-vous réseau, d’entretiens de recrutement…En effet, une fois que vous avez formalisé votre projet professionnel, vous devez ensuite le communiquer au marché (entreprises, experts, DRH…). Cette formation va vous permettre d’acquérir des outils opérationnels pour le présenter oralement de manière concise et efficace. Le déroulé de cette formation : Tour de table 1ère partie  :  techniques fondamentales du pitch2ème partie : Travail individuel sur le pitch3ème partie : partage de votre pitch avec le groupe et l’intervenantL’objectif est de vous permettre de : Acquérir et de mettre en pratique des techniques éprouvées. Construire un pitch efficace qui vous ressemble et de recevoir un feedback en live de la part de tous les participants et de l’intervenant. Modalités : Un nombre maximum de 8 participantsCette formation nécessite votre présence sur les 4 heures.  Accueil à partir de 8h30 dans nos locaux  Intervenant : Animé par Charles Cohen (E85), Senior executive coach associé chez NexmoveNexmove : partenaire privilégié des DRH dans le développement des talents et l’accompagnement des parcours professionnels de leur top management.https://nexmove.fr/ #carriererechercheemploi#carriereprojettransition",
+        "website": "",
+        "is_webinar": false,
+        "begin_at": "2025-12-02 08:45:00",
+        "end_at": "2025-12-02 12:45:00",
+        "time_zone": "Europe/Paris",
+        "created": "2024-12-12 16:56:54",
+        "updated": "2024-12-16 15:12:52",
+        "cover": "https://www.essecalumni.com/medias/image/2d441fe50e69b9f183dc0665eb59bc25.jpg",
+        "thumbnail": "https://www.essecalumni.com/medias/image/thumbnail_2d441fe50e69b9f183dc0665eb59bc25.jpg",
+        "is_on_site": true,
+        "seat_available": "0",
+        "is_replay_restricted_to_participants": false,
+        "web_url": "https://www.essecalumni.com/event/formation-pratique-comment-pitcher-en-3-minutes-en-transition-professionnelle/2025/10/22/6855",
+        "seat_available_count": 0,
+        "preview_picture_url": "https://www.essecalumni.com/medias/image/thumbnail_2d441fe50e69b9f183dc0665eb59bc25.jpg",
+        "am_i_participating": false,
+        "attendee_count": 8,
+        "show_nb_attendees": true,
+        "comment_count": 0,
+        "like_count": 0,
+        "limited": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/agenda/occurrence/6855"
+          }
+        },
+        "_embedded": {
+          "address": {
+            "venue": "Maison des ESSEC",
+            "address": "11, Avenue de Friedland",
+            "address_2": "",
+            "city": "PARIS",
+            "zip": "75008",
+            "country_iso": "FR"
+          },
+          "author": {
+            "id": "55438",
+            "name": "ESSEC Alumni",
+            "email": "",
+            "avatar": {
+              "user_id": "55438",
+              "display_name": "ESSEC Alumni",
+              "profile_photo": "https://www.essecalumni.com/medias/profile/15133969625d11173a7778e.png",
+              "color": "#d7f8ee",
+              "initials": "EA",
+              "_links": {
+                "self": {
+                  "href": "/api/v2/profile/people/55438"
+                }
+              }
+            },
+            "_links": {
+              "self": {
+                "href": "/api/v2/profile/people/55438"
+              }
+            }
+          },
+          "status": {
+            "id": "1",
+            "name": "0",
+            "label": "Publié"
+          },
+          "category": {
+            "id": "315",
+            "name": "Carrière",
+            "_links": {
+              "self": {
+                "href": "/api/v2/agenda/category/315"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "6888",
+        "title": "Atelier : Découvrez les 5 règles d’or d’un look pro réussi",
+        "description": "Découvrez les 5 règles d’or d’un look pro réussiAtelier animé par Christine der Ohanessian, Conseillère en Image, CDO Conseil.Vous êtes en reconversion professionnelle? Vous accédez à de nouvelles responsabilités? Vous êtes à la recherche d'un style à la fois élégant et confortable : venez découvrir dans cet atelier les 5 règles d’or pour apprendre à associer  matières, coupes, couleurs et accessoires. pour gagner en confiance.Vous êtes unique, votre style aussi, je vous donne tous les moyens pour le trouver.Réponses personnalisées suite au questionnaire envoyé 4 jours avant notre atelier.#carrieredevpersonnel#carriererechercheemploi#carriereprojettransition",
+        "website": "",
+        "is_webinar": false,
+        "begin_at": "2025-11-05 14:30:00",
+        "end_at": "2025-11-05 16:30:00",
+        "time_zone": "Europe/Paris",
+        "created": "2024-12-19 17:45:40",
+        "updated": "2025-05-15 11:06:59",
+        "cover": "https://www.essecalumni.com/medias/image/20861173366825aead5dda3.png",
+        "thumbnail": "https://www.essecalumni.com/medias/image/thumbnail_20861173366825aead5dda3.png",
+        "is_on_site": true,
+        "seat_available": "6",
+        "is_replay_restricted_to_participants": false,
+        "web_url": "https://www.essecalumni.com/event/atelier-decouvrez-les-5-regles-d-or-d-un-look-pro-reussi/2025/10/22/6888",
+        "seat_available_count": 6,
+        "preview_picture_url": "https://www.essecalumni.com/medias/image/thumbnail_20861173366825aead5dda3.png",
+        "am_i_participating": false,
+        "attendee_count": 4,
+        "show_nb_attendees": true,
+        "comment_count": 0,
+        "like_count": 0,
+        "limited": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/agenda/occurrence/6888"
+          }
+        },
+        "_embedded": {
+          "address": {
+            "venue": "ESSEC Alumni",
+            "address": "11, Avenue de Friedland",
+            "address_2": "",
+            "city": "PARIS",
+            "zip": "75008",
+            "country_iso": "FR"
+          },
+          "author": {
+            "id": "54745",
+            "name": "Elisabeth Dos Anjos",
+            "email": "",
+            "avatar": {
+              "user_id": "54745",
+              "display_name": "Elisabeth Dos Anjos",
+              "profile_photo": "https://www.essecalumni.com/medias/profile/2605378365d038e6b46046.jpeg",
+              "color": "#313378",
+              "initials": "ED",
+              "_links": {
+                "self": {
+                  "href": "/api/v2/profile/people/54745"
+                }
+              }
+            },
+            "_links": {
+              "self": {
+                "href": "/api/v2/profile/people/54745"
+              }
+            }
+          },
+          "status": {
+            "id": "1",
+            "name": "0",
+            "label": "Publié"
+          },
+          "category": {
+            "id": "315",
+            "name": "Carrière",
+            "_links": {
+              "self": {
+                "href": "/api/v2/agenda/category/315"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "6910",
+        "title": "Webinaire : Image professionnelle et carrière : que dit mon look sur ma personnalité ?",
+        "description": "Image professionnelle et carrière : que dit mon look sur ma personnalité ?Vous êtes un-e professionnel-le ambitieux-se, vous avez de l’énergie, des idées et de la passion pour votre métier.Vous voulez que votre carrière reflète vos attentes. Vous souhaitez une image qui reflète votre personnalité et vos compétences.L’image occupe une part importante des 6 dimensions de la communication personnelle que sont le verbal, le para verbal, le péri verbal, l’holo verbal, l’infra verbal et le supra verbal.Lors de ce webinaire vous accepterez de vous livrer face au miroir virtuel des participants pour recueillir des feedbacks constructifs, identifier une qualité à révéler et recevoir des conseils sur l’image.Webinaire animé par Sophie Pain – Diplômée du réseau ESSEC - Coach professionnel spécialisé dans l’accompagnement de cadres et Consultante en image certifiéehttps://www.linkedin.com/in/sophie-pain-662047a9/ #carrieredevpersonnel#carriererechercheemploi#carriereprojettransition",
+        "website": "",
+        "webinar_url": "",
+        "is_webinar": true,
+        "begin_at": "2025-11-12 17:30:00",
+        "end_at": "2025-11-12 18:30:00",
+        "time_zone": "Europe/Paris",
+        "created": "2025-01-05 20:02:55",
+        "updated": "2025-01-05 20:06:31",
+        "cover": "https://www.essecalumni.com/templates/common/images/background/event/bg-event-default.jpg",
+        "thumbnail": "https://www.essecalumni.com/templates/common/images/background/event/bg-event-default.jpg",
+        "is_on_site": false,
+        "seat_available": "7",
+        "is_replay_restricted_to_participants": false,
+        "web_url": "https://www.essecalumni.com/event/webinaire-image-professionnelle-et-carriere-que-dit-mon-look-sur-ma-personnalite/2025/10/22/6910",
+        "seat_available_count": 7,
+        "preview_picture_url": "https://www.essecalumni.com/templates/common/images/background/event/bg-event-default.jpg",
+        "am_i_participating": false,
+        "attendee_count": 3,
+        "show_nb_attendees": true,
+        "comment_count": 0,
+        "like_count": 0,
+        "limited": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/agenda/occurrence/6910"
+          }
+        },
+        "_embedded": {
+          "address": {
+            "venue": "Webinaire",
+            "address": "",
+            "address_2": "",
+            "city": "",
+            "zip": "",
+            "country_iso": ""
+          },
+          "author": {
+            "id": "55438",
+            "name": "ESSEC Alumni",
+            "email": "",
+            "avatar": {
+              "user_id": "55438",
+              "display_name": "ESSEC Alumni",
+              "profile_photo": "https://www.essecalumni.com/medias/profile/15133969625d11173a7778e.png",
+              "color": "#d7f8ee",
+              "initials": "EA",
+              "_links": {
+                "self": {
+                  "href": "/api/v2/profile/people/55438"
+                }
+              }
+            },
+            "_links": {
+              "self": {
+                "href": "/api/v2/profile/people/55438"
+              }
+            }
+          },
+          "status": {
+            "id": "1",
+            "name": "0",
+            "label": "Publié"
+          },
+          "category": {
+            "id": "315",
+            "name": "Carrière",
+            "_links": {
+              "self": {
+                "href": "/api/v2/agenda/category/315"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "6911",
+        "title": "Webinaire : Image professionnelle et carrière : que dit mon look sur ma personnalité ?",
+        "description": "Image professionnelle et carrière : que dit mon look sur ma personnalité ?Vous êtes un-e professionnel-le ambitieux-se, vous avez de l’énergie, des idées et de la passion pour votre métier.Vous voulez que votre carrière reflète vos attentes. Vous souhaitez une image qui reflète votre personnalité et vos compétences.L’image occupe une part importante des 6 dimensions de la communication personnelle que sont le verbal, le para verbal, le péri verbal, l’holo verbal, l’infra verbal et le supra verbal.Lors de ce webinaire vous accepterez de vous livrer face au miroir virtuel des participants pour recueillir des feedbacks constructifs, identifier une qualité à révéler et recevoir des conseils sur l’image.Webinaire animé par Sophie Pain – Diplômée du réseau ESSEC - Coach professionnel spécialisé dans l’accompagnement de cadres et Consultante en image certifiéehttps://www.linkedin.com/in/sophie-pain-662047a9/ #carrieredevpersonnel#carriererechercheemploi#carriereprojettransition",
+        "website": "",
+        "webinar_url": "",
+        "is_webinar": true,
+        "begin_at": "2025-12-10 17:30:00",
+        "end_at": "2025-12-10 18:30:00",
+        "time_zone": "Europe/Paris",
+        "created": "2025-01-05 20:02:59",
+        "updated": "2025-05-15 11:23:12",
+        "cover": "https://www.essecalumni.com/medias/image/1273656076825b27acb16d.png",
+        "thumbnail": "https://www.essecalumni.com/medias/image/thumbnail_1273656076825b27acb16d.png",
+        "is_on_site": false,
+        "seat_available": "8",
+        "is_replay_restricted_to_participants": false,
+        "web_url": "https://www.essecalumni.com/event/webinaire-image-professionnelle-et-carriere-que-dit-mon-look-sur-ma-personnalite/2025/10/22/6911",
+        "seat_available_count": 8,
+        "preview_picture_url": "https://www.essecalumni.com/medias/image/thumbnail_1273656076825b27acb16d.png",
+        "am_i_participating": false,
+        "attendee_count": 2,
+        "show_nb_attendees": true,
+        "comment_count": 0,
+        "like_count": 0,
+        "limited": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/agenda/occurrence/6911"
+          }
+        },
+        "_embedded": {
+          "address": {
+            "venue": "Webinaire",
+            "address": "",
+            "address_2": "",
+            "city": "",
+            "zip": "",
+            "country_iso": ""
+          },
+          "author": {
+            "id": "55438",
+            "name": "ESSEC Alumni",
+            "email": "",
+            "avatar": {
+              "user_id": "55438",
+              "display_name": "ESSEC Alumni",
+              "profile_photo": "https://www.essecalumni.com/medias/profile/15133969625d11173a7778e.png",
+              "color": "#d7f8ee",
+              "initials": "EA",
+              "_links": {
+                "self": {
+                  "href": "/api/v2/profile/people/55438"
+                }
+              }
+            },
+            "_links": {
+              "self": {
+                "href": "/api/v2/profile/people/55438"
+              }
+            }
+          },
+          "status": {
+            "id": "1",
+            "name": "0",
+            "label": "Publié"
+          },
+          "category": {
+            "id": "315",
+            "name": "Carrière",
+            "_links": {
+              "self": {
+                "href": "/api/v2/agenda/category/315"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "6959",
+        "title": "Afterwork de Novembre🍸",
+        "description": "Cher(e)s alumni, Le Club ESSEC Alumni Dauphiné et Pays de Savoie est heureux de vous convier à son prochain afterwork :📆 Jeudi 20 novembre🕑 De 19h à 21h30📍 O'Cardinal'S - 5 Place Métropole, 73000 ChambéryINSCRIPTIONSLes inscriptions sont ouvertes dans le module d'inscription ci-dessous.  Attention, le nombre total de places est limité à 20. Les consommations seront à régler sur place.ESSEC Alumni peut être amené à diffuser les photos et vidéos prises lors de cet événement dans ses différents supports de communication (brochures, newsletters, articles, magazine Reflets, médias sociaux, sites web, etc.). Si vous ne souhaitez pas être filmé ou photographié, merci de nous le signaler par e-mail (alumni-events@essec.edu) avant la tenue de l'événement. Alumni ESSEC, rejoignez le Club ESSEC Alumni Dauphiné et Pays de Savoie en devenant membre pour être informé des prochains événements juste ici.Au plaisir de vous retrouver nombreuses et nombreux pour cet événement.À très bientôt,Le Club ESSEC Alumni Dauphiné et Pays de Savoie.",
+        "website": "",
+        "is_webinar": false,
+        "begin_at": "2025-11-20 19:00:00",
+        "end_at": "2025-11-20 21:30:00",
+        "time_zone": "Europe/Paris",
+        "created": "2025-01-14 15:53:48",
+        "updated": "2025-01-14 16:07:27",
+        "cover": "https://www.essecalumni.com/medias/image/44231284367867da546627.png",
+        "thumbnail": "https://www.essecalumni.com/medias/image/thumbnail_44231284367867da546627.png",
+        "is_on_site": true,
+        "seat_available": "19",
+        "is_replay_restricted_to_participants": false,
+        "web_url": "https://www.essecalumni.com/event/afterwork-de-novembre-cocktail/2025/10/22/6959",
+        "seat_available_count": 19,
+        "preview_picture_url": "https://www.essecalumni.com/medias/image/thumbnail_44231284367867da546627.png",
+        "am_i_participating": false,
+        "attendee_count": 1,
+        "show_nb_attendees": true,
+        "comment_count": 0,
+        "like_count": 0,
+        "limited": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/agenda/occurrence/6959"
+          }
+        },
+        "_embedded": {
+          "address": {
+            "venue": "O'Cardinal'S",
+            "address": "5, Place Métropole",
+            "address_2": "",
+            "city": "CHAMBERY",
+            "zip": "73000",
+            "country_iso": "FR"
+          },
+          "author": {
+            "id": "86635",
+            "name": "Mathilde Failler",
+            "email": "",
+            "avatar": {
+              "user_id": "86635",
+              "display_name": "Mathilde Failler",
+              "color": "#a92f78",
+              "initials": "MF",
+              "_links": {
+                "self": {
+                  "href": "/api/v2/profile/people/86635"
+                }
+              }
+            },
+            "_links": {
+              "self": {
+                "href": "/api/v2/profile/people/86635"
+              }
+            }
+          },
+          "status": {
+            "id": "1",
+            "name": "0",
+            "label": "Publié"
+          },
+          "category": {
+            "id": "319",
+            "name": "Clubs régions",
+            "_links": {
+              "self": {
+                "href": "/api/v2/agenda/category/319"
+              }
+            }
+          },
+          "groups": [
+            {
+              "id": "79",
+              "name": "Dauphiné et Pays de Savoie",
+              "description": "Récemment arrivé ou installé depuis longtemps dans la région, originaire de celle-ci ou non, autant de bonnes raisons de faire signe ou de garder le contact avec les diplômés du Groupe ESSEC…Les Objectifs du Club :Essentiellement et prioritairement convivial : passer de bons moments ensemble, agréables et enrichissants, se tenir au courant des activités, échanger sur l’actualité… Mais aussi, selon les souhaits et la situation de chacun, une toute autre dimension : présenter son activité, échanger sur des projets, partager questionnements, informations, expériences ou bonnes pratiques. Tout ceci bien sûr, dans la mesure de nos emplois du temps chargés !Pour faciliter et développer ces liens, le président du club ESSEC Dauphiné Savoies et son bureau organisent avec vous et pour vous des rendez-vous amicaux, des visites, des événements à vivre ensemble dans la convivialité et l’ouverture.Environ 480 diplômés du Groupe ESSEC sont présents sur les 4 départements : Drôme, Isère, Savoie et Haute Savoie. Une région passionnante. Une centaine de Grandes Entreprises. Un tissu très dynamique de PME…N’hésitez pas à nous contacter.Au plaisir de vous retrouver lors d’une prochaine réunion !Nous vous demandons d'être à jour de votre cotisation à ESSEC Alumni, pour nous permettre d'animer, de mobiliser notre réseau ESSEC et le rendre particulièrement puissant et solidaire.La mission de l’association ESSEC Alumni :Aider les alumni à déployer leur potentiel et à démultiplier leur impact grâce à la puissance du collectif.",
+              "_links": {
+                "self": {
+                  "href": "/api/v2/social/group/79"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "7227",
+        "title": "Cycle Métiers et Impact : \"Marketing Responsable : un oxymore ?\"",
+        "description": "Dans le cadre du Cycle Métiers & Impact, ESSEC Alumni vous convie à un webinaire animé par Alexis de la Tour du Pin (E06),  Directeur exécutif du MSc   in Sutainability Transformation de l'ESSEC Business School :👉 Marketing Responsable : un oxymore ?Jeudi 27 novembre 2025 de 12h30 à 13h30En ligneLe marketing est souvent perçu comme incompatible avec un monde durable. Et pourtant, il peut devenir un formidable levier de transformation pour les entreprises.Dans cette masterclass, nous plongerons dans les coulisses des stratégies et équipes marketing :Comment les équipes naviguent entre objectifs business, pressions internes et attentes contradictoires des consommateurs ?Quelles pratiques permettent de concilier performance et responsabilité ?Nous partagerons des recommandations et explorerons des pistes très concrètes — du green bundle à des approches plus radicales comme le demarketing — pour repenser le marketing comme un levier du changement au service d’une économie plus durable.Un rendez-vous inspirant et pragmatique, ouvert à tous ceux qui veulent faire évoluer les pratiques sans renoncer à l’impact.📣 L'intervenant : Alexis de La Tour du Pin (E06)Alexis fait sa carrière en marketing dans le champ technologique et digital (Google 2006-2017; direction de la Chaire ESSEC Digital Disruption de 2017-2022). En 2015, il construit l’équipe RSE pour Google France avec les premières campagnes marketing de \"réputation\". Il initie le programme YouTube Creators for Change, et commence à travailler sur un marketing plus responsable et à s'intéresser aux nouveaux récits d'entreprise. Il co-fonde et dirige la chaire Transition Écologique et le MSc in Sustainability Transformation de l'ESSEC en 2021, et commence à donner des cours de marketing responsable dans les principaux programmes de l'ESSEC, ainsi qu'en formation continue. En 2024 il initie la création de cas pratiques sur ces sujets.Cet événement est gratuit et réservé aux Alumni (diplômés, participants de l'Executive Education  et étudiants de l'ESSEC)INSCRIPTION Les inscriptions sont ouvertes dans le module d'inscription ci-dessous. Votre futur job engagé n'attend que vous, inscrivez-vous vite !DROITS A L'IMAGEESSEC Alumni peut être amené à diffuser les photos et vidéos prises lors de cet événement dans ses différents supports de communication (brochures, newsletters, articles, magazine Reflets, médias sociaux, sites web, etc.). Si vous ne souhaitez pas être filmé ou photographié, merci de nous le signaler par e-mail avant la tenue de l'événement. Il est possible qu'un replay de l'événement soit partagé aux participants, et soit ajouté à la chaine Youtube ESSEC Alumni. Si vous ne souhaitez pas apparaître, merci de prendre vos précautions pendant le webinaire (utiliser un pseudonyme et éteindre votre caméra). Merci beaucoup.DROIT D'AUTEURSi une présentation et/ou un replay est partagé à la suite du webinaire, merci de le conserver pour votre usage personnel uniquement et de ne pas le diffuser afin de respecter les droits d'auteur du ou des intervenants.#transition #jobsàimpact #marketing",
+        "website": "",
+        "webinar_url": "https://us02web.zoom.us/j/3810697601?omn=83208186362",
+        "is_webinar": true,
+        "begin_at": "2025-11-27 12:30:00",
+        "end_at": "2025-11-27 13:30:00",
+        "time_zone": "Europe/Paris",
+        "created": "2025-03-31 11:08:21",
+        "updated": "2025-09-12 11:13:58",
+        "cover": "https://www.essecalumni.com/medias/image/148964999067ea669cdaa9a.png",
+        "thumbnail": "https://www.essecalumni.com/medias/image/thumbnail_148964999067ea669cdaa9a.png",
+        "is_on_site": false,
+        "seat_available": "90",
+        "is_replay_restricted_to_participants": false,
+        "web_url": "https://www.essecalumni.com/event/cycle-metiers-et-impact-marketing-responsable-un-oxymore/2025/10/22/7227",
+        "seat_available_count": 90,
+        "preview_picture_url": "https://www.essecalumni.com/medias/image/thumbnail_148964999067ea669cdaa9a.png",
+        "am_i_participating": false,
+        "attendee_count": 10,
+        "show_nb_attendees": true,
+        "comment_count": 0,
+        "like_count": 0,
+        "limited": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/agenda/occurrence/7227"
+          }
+        },
+        "_embedded": {
+          "address": {
+            "venue": "Sia",
+            "address": "",
+            "address_2": "",
+            "city": "",
+            "zip": "",
+            "country_iso": ""
+          },
+          "author": {
+            "id": "79315",
+            "name": "Sounya Kiniffo",
+            "email": "",
+            "avatar": {
+              "user_id": "79315",
+              "display_name": "Sounya Kiniffo",
+              "color": "#e00831",
+              "initials": "SK",
+              "_links": {
+                "self": {
+                  "href": "/api/v2/profile/people/79315"
+                }
+              }
+            },
+            "_links": {
+              "self": {
+                "href": "/api/v2/profile/people/79315"
+              }
+            }
+          },
+          "status": {
+            "id": "1",
+            "name": "0",
+            "label": "Publié"
+          },
+          "category": {
+            "id": "315",
+            "name": "Carrière",
+            "_links": {
+              "self": {
+                "href": "/api/v2/agenda/category/315"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "7354",
+        "title": "Webinaire - Décrochez le job qui vous correspond : posture et questions à poser en entretien",
+        "description": "Décrochez le job qui vous correspond : posture et questions à poser en entretienDescriptif : Dans vos entretiens d’embauche, il est essentiel d’adopter une posture à l’écoute des « signaux faibles » et d’identifier les bonnes questions à poser pour vérifier que le poste correspond réellement à vos attentes.Les témoignages de certains de mes clients sur leur prise de poste montrent qu’il est important dès l’entretien d’embauche d’oser « tâter le terrain » avec les bonnes questions, pour comprendre au mieux la réalité du job et de l’entreprise : « J'ai été surprise par l'écart entre ce que j’avais imaginé et la réalité du travail », « J'ai vite compris que les valeurs de l'organisation ne correspondaient pas aux miennes », « le rythme de travail était insoutenable ».Ce webinaire vous guidera avec des outils pratiques pour :1.        Adopter une posture d’écoute active et poser des questions ouvertes en entretien2.        Identifier vos besoins et les bonnes questions à poser pour évaluer si les missions du poste, la culture d’entreprise, le rythme de travail ou encore le style de management sont alignés avec vos besoins.3.        Définir les bonnes pratiques pour vous renseigner auprès de votre réseau Pour qui ? Ce webinaire s’adresse aux personnes en transition de carrière ou en recherche d’emploi qui veulent mettre toutes les chances de leur côté pour que leur prochain poste corresponde au mieux à leurs aspirations.Atelier animé par Marion Kalfon (E07) - coach professionnelle -  société ECLORMarion accompagne, en tant que coach professionnelle, la réussite des prises de poste et le passage des grandes étapes de carrière. Elle facilite aussi les transitions professionnelles et les départs, en aidant ses clients à retrouver du sens et de l’envie dans leur projet de carrière.Marion accompagne à la fois le projet professionnel du client et le développement de sa posture et de son savoir-être. Elle nourrit ses accompagnements de ses 16 ans d’expérience dans le secteur agroalimentaire dans des groupes internationaux comme responsable d’équipes Marketing et coordinatrice projet dans l’innovation et la stratégie des marques.Bon à savoir : Marion est aussi coach partenaire d’ESSEC ALUMNI – vous pouvez bénéficier de son accompagnement dans le cadre de votre cotisation annuelle.Pour la contacter :linkedin.com/in/marionkalfon marion.kalfon@eclor.co06 64 74 87 84 https://www.essecalumni.com/medias/editor/Carriere_Coach/Fiches_Coach-FR/kalfon_m-fr.pdf#carriererechercheemploi#carriereprojettransition",
+        "website": "",
+        "webinar_url": "",
+        "is_webinar": true,
+        "begin_at": "2025-10-28 12:30:00",
+        "end_at": "2025-10-28 14:00:00",
+        "time_zone": "Europe/Paris",
+        "created": "2025-05-12 13:31:23",
+        "updated": "2025-10-02 15:15:03",
+        "cover": "https://www.essecalumni.com/medias/image/32408145968de7ad156fe7.png",
+        "thumbnail": "https://www.essecalumni.com/medias/image/thumbnail_32408145968de7ad156fe7.png",
+        "is_on_site": false,
+        "seat_available": "0",
+        "is_replay_restricted_to_participants": false,
+        "web_url": "https://www.essecalumni.com/event/webinaire-decrochez-le-job-qui-vous-correspond-posture-et-questions-a-poser-en-entretien/2025/10/22/7354",
+        "seat_available_count": 0,
+        "preview_picture_url": "https://www.essecalumni.com/medias/image/thumbnail_32408145968de7ad156fe7.png",
+        "am_i_participating": false,
+        "attendee_count": 35,
+        "show_nb_attendees": true,
+        "comment_count": 0,
+        "like_count": 0,
+        "limited": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/agenda/occurrence/7354"
+          }
+        },
+        "_embedded": {
+          "address": {
+            "venue": "---",
+            "address": "",
+            "address_2": "",
+            "city": "",
+            "zip": "",
+            "country_iso": ""
+          },
+          "author": {
+            "id": "55438",
+            "name": "ESSEC Alumni",
+            "email": "",
+            "avatar": {
+              "user_id": "55438",
+              "display_name": "ESSEC Alumni",
+              "profile_photo": "https://www.essecalumni.com/medias/profile/15133969625d11173a7778e.png",
+              "color": "#d7f8ee",
+              "initials": "EA",
+              "_links": {
+                "self": {
+                  "href": "/api/v2/profile/people/55438"
+                }
+              }
+            },
+            "_links": {
+              "self": {
+                "href": "/api/v2/profile/people/55438"
+              }
+            }
+          },
+          "status": {
+            "id": "1",
+            "name": "0",
+            "label": "Publié"
+          },
+          "category": {
+            "id": "315",
+            "name": "Carrière",
+            "_links": {
+              "self": {
+                "href": "/api/v2/agenda/category/315"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "7421",
+        "title": "Webinaire : Stratégie de recherche d'emploi (méthode)",
+        "description": "Stratégie de recherche d'emploi (méthode)\"Qu’est-ce qui détermine une recherche courte ? Quelles en sont les différentes phases ? Comment organiser son temps ? Ou mettre ses priorités ?Du bilan de carrière à la prise de fonction, il n’est pas toujours facile de garder le cap dans un parcours de transition professionnelle.Cet atelier vous donnera toutes les clés d’un repositionnement rapide et réussi.\"Intervenant : Arnaud Delphin est expert en évolution professionnelle.Ingénieur de formation, après 15 ans de management opérationnel dans les télécoms, il décide en 2011 de rebondir sur l’Executive MBA d’HEC pour aider les dirigeants et leurs équipes à réussir leurs changements professionnels, que ceux-ci soient en poste (coaching) ou en transition (outplacement).Coach certifié, il est aujourd’hui Associé Fondateur de Cap Dirigeant à Paris et à Lyon.Conférencier auprès des alumni de grandes écoles, il est aussi l’auteur de « Managers ! Assurez dès votre prise de fonction » paru en 2017 aux éditions Dunod.Si vous souhaitez en savoir plus sur la démarche globale proposée par Arnaud Delphin (Projet/ objectif professionnel, offre de service et marketing de soi, réseau physique et digital, prise de fonction)Suivez ses autres webinars du matin sur les outils de recherche d'emploi ( profil LinkedIn, réseau, entretien de recrutement, négociation de salaire) tous visibles sur l'agenda Carrière. #carriererechercheemploi#carriereprojettransition",
+        "website": "",
+        "webinar_url": "",
+        "is_webinar": true,
+        "begin_at": "2025-12-02 08:00:00",
+        "end_at": "2025-12-02 09:30:00",
+        "time_zone": "Europe/Paris",
+        "created": "2025-05-22 10:48:38",
+        "updated": "2025-05-22 10:51:48",
+        "cover": "https://www.essecalumni.com/medias/image/828132987682ee56ad7769.png",
+        "thumbnail": "https://www.essecalumni.com/medias/image/thumbnail_828132987682ee56ad7769.png",
+        "is_on_site": false,
+        "seat_available": "27",
+        "is_replay_restricted_to_participants": false,
+        "web_url": "https://www.essecalumni.com/event/webinaire-strategie-de-recherche-d-emploi-methode/2025/10/22/7421",
+        "seat_available_count": 27,
+        "preview_picture_url": "https://www.essecalumni.com/medias/image/thumbnail_828132987682ee56ad7769.png",
+        "am_i_participating": false,
+        "attendee_count": 3,
+        "show_nb_attendees": true,
+        "comment_count": 0,
+        "like_count": 0,
+        "limited": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/agenda/occurrence/7421"
+          }
+        },
+        "_embedded": {
+          "address": {
+            "venue": "---",
+            "address": "",
+            "address_2": "",
+            "city": "",
+            "zip": "",
+            "country_iso": ""
+          },
+          "author": {
+            "id": "55438",
+            "name": "ESSEC Alumni",
+            "email": "",
+            "avatar": {
+              "user_id": "55438",
+              "display_name": "ESSEC Alumni",
+              "profile_photo": "https://www.essecalumni.com/medias/profile/15133969625d11173a7778e.png",
+              "color": "#d7f8ee",
+              "initials": "EA",
+              "_links": {
+                "self": {
+                  "href": "/api/v2/profile/people/55438"
+                }
+              }
+            },
+            "_links": {
+              "self": {
+                "href": "/api/v2/profile/people/55438"
+              }
+            }
+          },
+          "status": {
+            "id": "1",
+            "name": "0",
+            "label": "Publié"
+          },
+          "category": {
+            "id": "315",
+            "name": "Carrière",
+            "_links": {
+              "self": {
+                "href": "/api/v2/agenda/category/315"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "7422",
+        "title": "Webinaire : Stratégie de recherche d'emploi (méthode)",
+        "description": "Stratégie de recherche d'emploi (méthode)\"Qu’est-ce qui détermine une recherche courte ? Quelles en sont les différentes phases ? Comment organiser son temps ? Ou mettre ses priorités ?Du bilan de carrière à la prise de fonction, il n’est pas toujours facile de garder le cap dans un parcours de transition professionnelle.Cet atelier vous donnera toutes les clés d’un repositionnement rapide et réussi.\"Intervenant : Arnaud Delphin est expert en évolution professionnelle.Ingénieur de formation, après 15 ans de management opérationnel dans les télécoms, il décide en 2011 de rebondir sur l’Executive MBA d’HEC pour aider les dirigeants et leurs équipes à réussir leurs changements professionnels, que ceux-ci soient en poste (coaching) ou en transition (outplacement).Coach certifié, il est aujourd’hui Associé Fondateur de Cap Dirigeant à Paris et à Lyon.Conférencier auprès des alumni de grandes écoles, il est aussi l’auteur de « Managers ! Assurez dès votre prise de fonction » paru en 2017 aux éditions Dunod.Si vous souhaitez en savoir plus sur la démarche globale proposée par Arnaud Delphin (Projet/ objectif professionnel, offre de service et marketing de soi, réseau physique et digital, prise de fonction)Suivez ses autres webinars du matin sur les outils de recherche d'emploi ( profil LinkedIn, réseau, entretien de recrutement, négociation de salaire) tous visibles sur l'agenda Carrière. #carriererechercheemploi#carriereprojettransition",
+        "website": "",
+        "webinar_url": "",
+        "is_webinar": true,
+        "begin_at": "2026-02-03 08:00:00",
+        "end_at": "2026-02-03 09:30:00",
+        "time_zone": "Europe/Paris",
+        "created": "2025-05-22 10:52:08",
+        "updated": "2025-05-22 10:54:25",
+        "cover": "https://www.essecalumni.com/medias/image/1087966935682ee6250b34b.png",
+        "thumbnail": "https://www.essecalumni.com/medias/image/thumbnail_1087966935682ee6250b34b.png",
+        "is_on_site": false,
+        "seat_available": "30",
+        "is_replay_restricted_to_participants": false,
+        "web_url": "https://www.essecalumni.com/event/webinaire-strategie-de-recherche-d-emploi-methode/2025/10/22/7422",
+        "seat_available_count": 30,
+        "preview_picture_url": "https://www.essecalumni.com/medias/image/thumbnail_1087966935682ee6250b34b.png",
+        "am_i_participating": false,
+        "attendee_count": 0,
+        "show_nb_attendees": false,
+        "comment_count": 0,
+        "like_count": 0,
+        "limited": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/agenda/occurrence/7422"
+          }
+        },
+        "_embedded": {
+          "address": {
+            "venue": "---",
+            "address": "",
+            "address_2": "",
+            "city": "",
+            "zip": "",
+            "country_iso": ""
+          },
+          "author": {
+            "id": "55438",
+            "name": "ESSEC Alumni",
+            "email": "",
+            "avatar": {
+              "user_id": "55438",
+              "display_name": "ESSEC Alumni",
+              "profile_photo": "https://www.essecalumni.com/medias/profile/15133969625d11173a7778e.png",
+              "color": "#d7f8ee",
+              "initials": "EA",
+              "_links": {
+                "self": {
+                  "href": "/api/v2/profile/people/55438"
+                }
+              }
+            },
+            "_links": {
+              "self": {
+                "href": "/api/v2/profile/people/55438"
+              }
+            }
+          },
+          "status": {
+            "id": "1",
+            "name": "0",
+            "label": "Publié"
+          },
+          "category": {
+            "id": "315",
+            "name": "Carrière",
+            "_links": {
+              "self": {
+                "href": "/api/v2/agenda/category/315"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "7423",
+        "title": "Webinaire : Pitch et recherche d'emploi (mise en pratique)",
+        "description": "Pitch et recherche d'emploi (mise en pratique)\"Comment avoir de l'impact dès les premières minutes d'un entretien ? Comment être efficace dans sa recherche et développer son réseau ?Après votre projet professionnel, la réussite de votre transition s'appuiera sur la mise en place concrète d'une démarche réseau efficace et proactive.Cet atelier vous permettra d'expérimenter votre pitch et répondra aux questions pratiques que vous vous posez sur la recherche d'emploi et le réseau\"Intervenant : Arnaud Delphin est expert en évolution professionnelle.Ingénieur de formation, après 15 ans de management opérationnel dans les télécoms, il décide en 2011 de rebondir sur l’Executive MBA d’HEC pour aider les dirigeants et leurs équipes à réussir leurs changements professionnels, que ceux-ci soient en poste (coaching) ou en transition (outplacement).Coach certifié, il est aujourd’hui Associé Fondateur de Cap Dirigeant à Paris et à Lyon.Conférencier auprès des alumni de grandes écoles, il est aussi l’auteur de « Managers ! Assurez dès votre prise de fonction » paru en 2017 aux éditions Dunod.Si vous souhaitez en savoir plus sur la démarche globale proposée par Arnaud Delphin (Projet/ objectif professionnel, offre de service et marketing de soi, réseau physique et digital, prise de fonction)Suivez ses autres webinars du matin sur les outils de recherche d'emploi ( profil LinkedIn, réseau, entretien de recrutement, négociation de salaire) tous visibles sur l'agenda Carrière. #carriererechercheemploi#carriereprojettransition",
+        "website": "",
+        "webinar_url": "",
+        "is_webinar": true,
+        "begin_at": "2026-03-03 08:00:00",
+        "end_at": "2026-03-03 09:30:00",
+        "time_zone": "Europe/Paris",
+        "created": "2025-05-22 10:54:38",
+        "updated": "2025-05-22 10:59:52",
+        "cover": "https://www.essecalumni.com/medias/image/1694296413682ee75e45d3a.png",
+        "thumbnail": "https://www.essecalumni.com/medias/image/thumbnail_1694296413682ee75e45d3a.png",
+        "is_on_site": false,
+        "seat_available": "30",
+        "is_replay_restricted_to_participants": false,
+        "web_url": "https://www.essecalumni.com/event/webinaire-pitch-et-recherche-d-emploi-mise-en-pratique/2025/10/22/7423",
+        "seat_available_count": 30,
+        "preview_picture_url": "https://www.essecalumni.com/medias/image/thumbnail_1694296413682ee75e45d3a.png",
+        "am_i_participating": false,
+        "attendee_count": 0,
+        "show_nb_attendees": false,
+        "comment_count": 0,
+        "like_count": 0,
+        "limited": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/agenda/occurrence/7423"
+          }
+        },
+        "_embedded": {
+          "address": {
+            "venue": "---",
+            "address": "",
+            "address_2": "",
+            "city": "",
+            "zip": "",
+            "country_iso": ""
+          },
+          "author": {
+            "id": "55438",
+            "name": "ESSEC Alumni",
+            "email": "",
+            "avatar": {
+              "user_id": "55438",
+              "display_name": "ESSEC Alumni",
+              "profile_photo": "https://www.essecalumni.com/medias/profile/15133969625d11173a7778e.png",
+              "color": "#d7f8ee",
+              "initials": "EA",
+              "_links": {
+                "self": {
+                  "href": "/api/v2/profile/people/55438"
+                }
+              }
+            },
+            "_links": {
+              "self": {
+                "href": "/api/v2/profile/people/55438"
+              }
+            }
+          },
+          "status": {
+            "id": "1",
+            "name": "0",
+            "label": "Publié"
+          },
+          "category": {
+            "id": "315",
+            "name": "Carrière",
+            "_links": {
+              "self": {
+                "href": "/api/v2/agenda/category/315"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "7424",
+        "title": "Webinaire : Pitch et recherche d'emploi (mise en pratique)",
+        "description": "Pitch et recherche d'emploi (mise en pratique)\"Comment avoir de l'impact dès les premières minutes d'un entretien ? Comment être efficace dans sa recherche et développer son réseau ?Après votre projet professionnel, la réussite de votre transition s'appuiera sur la mise en place concrète d'une démarche réseau efficace et proactive.Cet atelier vous permettra d'expérimenter votre pitch et répondra aux questions pratiques que vous vous posez sur la recherche d'emploi et le réseau\"Intervenant : Arnaud Delphin est expert en évolution professionnelle.Ingénieur de formation, après 15 ans de management opérationnel dans les télécoms, il décide en 2011 de rebondir sur l’Executive MBA d’HEC pour aider les dirigeants et leurs équipes à réussir leurs changements professionnels, que ceux-ci soient en poste (coaching) ou en transition (outplacement).Coach certifié, il est aujourd’hui Associé Fondateur de Cap Dirigeant à Paris et à Lyon.Conférencier auprès des alumni de grandes écoles, il est aussi l’auteur de « Managers ! Assurez dès votre prise de fonction » paru en 2017 aux éditions Dunod.Si vous souhaitez en savoir plus sur la démarche globale proposée par Arnaud Delphin (Projet/ objectif professionnel, offre de service et marketing de soi, réseau physique et digital, prise de fonction)Suivez ses autres webinars du matin sur les outils de recherche d'emploi ( profil LinkedIn, réseau, entretien de recrutement, négociation de salaire) tous visibles sur l'agenda Carrière. #carriererechercheemploi#carriereprojettransition",
+        "website": "",
+        "webinar_url": "",
+        "is_webinar": true,
+        "begin_at": "2026-01-06 08:00:00",
+        "end_at": "2026-01-06 09:30:00",
+        "time_zone": "Europe/Paris",
+        "created": "2025-05-22 11:00:09",
+        "updated": "2025-05-22 11:03:15",
+        "cover": "https://www.essecalumni.com/medias/image/589713562682ee8346c973.png",
+        "thumbnail": "https://www.essecalumni.com/medias/image/thumbnail_589713562682ee8346c973.png",
+        "is_on_site": false,
+        "seat_available": "30",
+        "is_replay_restricted_to_participants": false,
+        "web_url": "https://www.essecalumni.com/event/webinaire-pitch-et-recherche-d-emploi-mise-en-pratique/2025/10/22/7424",
+        "seat_available_count": 30,
+        "preview_picture_url": "https://www.essecalumni.com/medias/image/thumbnail_589713562682ee8346c973.png",
+        "am_i_participating": false,
+        "attendee_count": 0,
+        "show_nb_attendees": false,
+        "comment_count": 0,
+        "like_count": 0,
+        "limited": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/agenda/occurrence/7424"
+          }
+        },
+        "_embedded": {
+          "address": {
+            "venue": "---",
+            "address": "",
+            "address_2": "",
+            "city": "",
+            "zip": "",
+            "country_iso": ""
+          },
+          "author": {
+            "id": "55438",
+            "name": "ESSEC Alumni",
+            "email": "",
+            "avatar": {
+              "user_id": "55438",
+              "display_name": "ESSEC Alumni",
+              "profile_photo": "https://www.essecalumni.com/medias/profile/15133969625d11173a7778e.png",
+              "color": "#d7f8ee",
+              "initials": "EA",
+              "_links": {
+                "self": {
+                  "href": "/api/v2/profile/people/55438"
+                }
+              }
+            },
+            "_links": {
+              "self": {
+                "href": "/api/v2/profile/people/55438"
+              }
+            }
+          },
+          "status": {
+            "id": "1",
+            "name": "0",
+            "label": "Publié"
+          },
+          "category": {
+            "id": "315",
+            "name": "Carrière",
+            "_links": {
+              "self": {
+                "href": "/api/v2/agenda/category/315"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

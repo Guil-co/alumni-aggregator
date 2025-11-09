@@ -1,0 +1,91 @@
+<!doctype html><meta charset="utf-8">
+<title>Agenda Alumni – multi-écoles</title>
+<style>
+body{font:14px system-ui,Arial;margin:24px;background:#f9fafc;color:#111}
+h1{font-size:22px;margin-bottom:1em}
+.event{background:white;border-radius:12px;padding:16px;margin:12px 0;
+       display:flex;align-items:flex-start;gap:16px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.event img{width:160px;height:100px;object-fit:cover;border-radius:8px}
+.meta{font-size:13px;color:#555;margin:4px 0}
+.school-tag{font-weight:600;color:#1e3a8a;background:#eef2ff;
+            border-radius:999px;padding:2px 8px;font-size:12px;margin-left:6px}
+.filters{display:flex;gap:12px;margin-bottom:20px;align-items:center;flex-wrap:wrap}
+.badge{display:inline-block;background:#e0e7ff;color:#3730a3;font-weight:500;
+       padding:2px 8px;border-radius:8px;font-size:12px;margin-right:6px}
+.btn{background:#4338ca;color:#fff;text-decoration:none;font-weight:600;
+     padding:8px 14px;border-radius:8px;font-size:14px;display:inline-block;margin-top:8px}
+</style>
+
+<h1>Agenda Alumni</h1>
+<div class="filters">
+  <input id="search" placeholder="Rechercher (titre, desc)" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ccc">
+  <select id="school"><option value="">🏫 Toutes les écoles</option></select>
+  <select id="city"><option value="">📍 Toutes les villes</option></select>
+  <label style="display:flex;gap:6px;align-items:center">
+    <input type="checkbox" id="onlineOnly"> En ligne uniquement
+  </label>
+</div>
+<div id="list">Chargement...</div>
+
+<script>
+async function load() {
+  const r = await fetch("events.json");
+  const data = await r.json();
+  window.allEvents = data;
+  populateFilters(data);
+  render(data);
+}
+
+function populateFilters(data){
+  const schools=[...new Set(data.map(e=>e.school).filter(Boolean))].sort();
+  const cities=[...new Set(data.map(e=>e.city).filter(Boolean))].sort();
+  const sSel=document.getElementById('school');
+  const cSel=document.getElementById('city');
+  const chk=document.getElementById('onlineOnly');
+  schools.forEach(x=>sSel.innerHTML+=`<option>${x}</option>`);
+  cities.forEach(x=>cSel.innerHTML+=`<option>${x}</option>`);
+  const refresh=()=>filter();
+  [sSel,cSel,document.getElementById('search')].forEach(el=>el.oninput=refresh);
+  chk.onchange=()=>{ cSel.disabled = chk.checked; if(chk.checked) cSel.value=""; refresh(); };
+}
+
+function filter(){
+  const s=document.getElementById('search').value.toLowerCase();
+  const school=document.getElementById('school').value;
+  const city=document.getElementById('city').value;
+  const onlineOnly=document.getElementById('onlineOnly').checked;
+
+  let f=window.allEvents.filter(e=>{
+    const t=`${e.title} ${e.description||''}`.toLowerCase();
+    if(s && !t.includes(s)) return false;
+    if(school && e.school!==school) return false;
+    if(onlineOnly && !e.isOnline) return false;      // <- nouveau filtre
+    if(!onlineOnly && city && e.city!==city) return false;
+    return true;
+  });
+  render(f);
+}
+
+function render(data){
+  const list=document.getElementById('list');
+  if(!data.length){list.innerHTML="<p>Aucun événement trouvé.</p>";return}
+  list.innerHTML=data.map(d=>{
+    const start=d.start?new Date(d.start).toLocaleString('fr-FR',{dateStyle:'full',timeStyle:'short'}):"";
+    const badge=d.isOnline?`<span class="badge">En ligne</span>`:`<span class="badge">📍 ${d.city||''}</span>`;
+    const img=d.imageUrl?`<img src="${d.imageUrl}">`:"";
+    return `
+    <div class="event">
+      ${img}
+      <div>
+        <div class="meta">${badge}${start?` · ${start}`:""}</div>
+        <div class="title"><strong>${d.title}</strong><span class="school-tag">${d.school}</span></div>
+        <div class="meta">${d.location||''}</div>
+        <div class="desc">${(d.description||'').slice(0,200)}...</div>
+        <a class="btn" href="${d.url}" target="_blank">En savoir plus</a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+load();
+</script>
