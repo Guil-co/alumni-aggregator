@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.log
+
+# Virtual env
+.venv/
+env/
+venv/
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# Node (si jamais tu ajoutes un front JS)
+node_modules/
+
+# Artifacts locaux
+*.cache
+
+# (Optionnel) Ne pas suivre les fichiers générés
+# output/events.json
+# output/events.csv
